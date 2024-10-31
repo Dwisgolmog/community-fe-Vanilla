@@ -23,6 +23,11 @@ form{
     border-radius: 4px;
     padding-left: 12px;
 }
+.form-group label{
+    size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
 .helper-text {
     color: #FF0000;
     font-size: 12px;

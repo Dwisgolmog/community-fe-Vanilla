@@ -1,0 +1,18 @@
+.header{
+    position: relative;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    height: 104px;
+    margin: 0;
+}
+.header h1{
+    margin: 0;
+}
+.header a img{
+    width: 11px;
+    height: 19px;
+    position: absolute;
+    left: 40%;
+    top: 45%;
+}
