@@ -1,0 +1,163 @@
+.main-content{
+    box-sizing: border-box;
+    width: 592x;
+    height: 100%;
+    align-content: center;
+    justify-items: center;
+}
+.header-content{
+    width: 544px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+.board-info-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.board-info{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+.main-content h2{
+    font-size: 24px;
+    font-weight: 700;
+}
+.eidt-board-btn button{
+    width: 50px;
+    height: 27px;
+    border: 1px solid #ACA0EB;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 400;
+}
+.textBox{
+    width: 544px;
+    height: 231px;
+    overflow-y: auto;
+    margin-bottom: 32px;
+}
+.board-stats{
+    display: flex;
+}
+.status-box{
+    width: 116px;
+    height: 77px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    margin-right: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.comment-box{
+    box-sizing: border-box;
+    background-color: white;
+    width: 592px;
+    height: 169px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 21px;
+}
+.comment-box button{
+    width: 138px;
+    height: 39px;
+    background-color: #ACA0EB;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    margin-right: 4px;
+}
+.comment{
+    width: 544px;
+    height: 65px;
+    display: flex;
+    margin-bottom: 5%;
+    justify-content: space-between;
+}
+.comment-title{
+    display: flex;
+    align-items: center;
+}
+.comment-content{
+    margin-left: 46px;
+}
+.comment-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.comment-btn button{
+    width: 50px;
+    height: 27px;
+    border: 1px solid #ACA0EB;
+    border-radius: 5px;
+}
+.board-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은 배경 */
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.comment-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은 배경 */
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.modal{
+    box-sizing: border-box;
+    background-color: white;
+    width: 408px;
+    height: 242px;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    border-radius: 15px;
+    text-align: center;
+}
+.modal-btn1, .modal-btn3{
+    width: 127px;
+    height: 44px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 0;
+}
+.modal-btn2, .modal-btn4{
+    width: 127px;
+    height: 44px;
+    background-color: #C4A5FA;
+    color: black;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 0;
+}
+button{
+    transition: transform 0.1s, background-color 0.1s;
+}
+button:active{
+    background-color: #555;
+    transform: scale(0.95);
+}

@@ -51,3 +51,10 @@
     height: 36px;
     border-radius: 50%;
 }   
+button{
+    transition: transform 0.1s, background-color 0.1s;
+}
+button:active{
+    background-color: #555;
+    transform: scale(0.95);
+}
