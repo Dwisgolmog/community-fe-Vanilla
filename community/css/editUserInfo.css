@@ -1,0 +1,148 @@
+.body-frame{
+    width: 355px;
+    text-align: center;
+}
+.profile-Img{
+    display: flex;
+}
+.imgBox{
+    width: 355px;
+    height: 149px;
+    position: relative;
+    margin-bottom: 36px;
+}
+.imgBox img{
+    position: absolute;
+    left: 111.75px;
+    width: 149px;
+    height: 149px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.btn-upload {
+    position: absolute;
+    top: 57px;
+    left: 159px;
+    width: 52px;
+    height: 27px;
+    background: rgb(0, 0, 0, 0.35);
+    border: 1px solid white;
+    border-radius: 25px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#file {
+    display: none;
+}
+.btn-upload:hover{
+    z-index: 1;
+}
+.imgBox img:hover{
+    z-index: 0  ;
+    filter: brightness(0.35);
+}
+.editBox{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+.editBox p{
+    margin: 0;
+}
+.editBox input{
+    width: 346px;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 9px;
+    border-radius: 4px; 
+    border: 1px solid black;
+}
+.edit-btn{
+    width: 355px;
+    height: 33px;
+    background-color: #ACA0EB;
+    color: white;
+    border-radius: 4px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+.del-id{
+    font-size: 14px;
+    font-weight: 400;
+    background-color: rgb(0, 0, 0, 0);
+    border: 0;
+    margin-bottom: 79px;
+}
+.complete-edit{
+    width: 102px;
+    height: 46px;
+    border-radius: 30px;
+    background-color: #ACA0EB;
+    color: white;
+    border: 0;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.del-id2{
+    cursor: pointer;
+}
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은 배경 */
+    justify-content: center;
+    align-items: center;
+    display: none;
+    z-index: 2;
+}
+.modal{
+    box-sizing: border-box;
+    background-color: white;
+    width: 408px;
+    height: 242px;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    border-radius: 15px;
+    text-align: center;
+}
+.modal-btn1{
+    width: 127px;
+    height: 44px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 0;
+}
+.modal-btn2{
+    width: 127px;
+    height: 44px;
+    background-color: #C4A5FA;
+    color: black;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 400;
+    border: 0;
+}
+button{
+    transition: transform 0.1s, background-color 0.1s;
+}
+button:active{
+    background-color: #555;
+    transform: scale(0.95);
+}
