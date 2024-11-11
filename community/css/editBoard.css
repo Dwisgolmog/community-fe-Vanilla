@@ -1,0 +1,38 @@
+.title{
+    width: 592px;
+    margin-bottom: 26px;
+}
+hr{
+    color: rgba(0, 0, 0, 0.16);
+}
+.content{
+    width: 592px;
+}
+.content textarea{
+    width: 544px;
+    height: 231px;
+    margin-top: 24px;
+    margin-left: 23px;
+    margin-bottom: 24px;
+}
+.editImg{
+    width: 592px;
+    padding-left: 24px;
+    margin-bottom: 33px;
+}
+.edit-btn{
+    width: 355px;
+    height: 33px;
+    background: #7F6AEE;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 0;
+    margin-bottom: 50px;
+    transition: transform 0.1s; background-color: 0.1s;
+}
+.edit-btn:active{
+    background-color: rgb(86, 49, 170);
+    transform: scale(0.95);
+}
