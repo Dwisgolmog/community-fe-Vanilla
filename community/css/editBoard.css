@@ -2,6 +2,13 @@
     width: 592px;
     margin-bottom: 26px;
 }
+.title input{
+    width: 90%;
+    margin: 18px 0 19px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    height: 28.5px;
+}
 hr{
     color: rgba(0, 0, 0, 0.16);
 }
@@ -14,6 +21,7 @@ hr{
     margin-top: 24px;
     margin-left: 23px;
     margin-bottom: 24px;
+    padding: 10px;
 }
 .editImg{
     width: 592px;
