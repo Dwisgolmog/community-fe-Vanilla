@@ -27,6 +27,7 @@
     border-radius: 5px;
     margin: 2%;
     padding: 3%;
+    cursor: pointer;
 }
 .board h2{
     font-size: 24px;
