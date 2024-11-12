@@ -12,8 +12,16 @@
 
 <body>
     <div class="header">
-        <h1 style="font-size: 32px; font-weight: 400;">아무 말 대잔치</h1>
-        <img src="../img/profile.jpeg" alt="Icon">
+        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">아무 말 대잔치</a> 
+
+        <div class="dropdown">
+            <img src="../img/profile.jpeg" class="profile-icon" alt="Icon">
+            <div class="dropdown-menu">
+                <div class="dropdown-element"><a href="/profile/edit">회원정보수정</a></div>
+                <div class="dropdown-element"><a href="/password/change">비밀번호수정</a></div>
+                <div class="dropdown-element"><a href="/logout">로그아웃</a></div>
+            </div>
+        </div>
     </div>
     <hr style="margin: 0 auto; width: 100%;">
 
@@ -87,6 +95,22 @@
     })
     okModal.addEventListener('click',()=>{
         //회원탈퇴 로직 수행
+    })
+
+    const profileIcon = document.querySelector('.profile-icon');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const dropdownElement = document.querySelector('.dropdown-element');
+    profileIcon.addEventListener('mouseenter',()=>{
+        dropdownMenu.style.display = 'block';
+    })
+    profileIcon.addEventListener('mouseleave',()=>{
+        dropdownMenu.style.display = 'none';
+    })
+    dropdownMenu.addEventListener('mouseenter',()=>{
+        dropdownMenu.style.display = 'block';
+    })
+    dropdownMenu.addEventListener('mouseleave',()=>{
+        dropdownMenu.style.display = 'none';
     })
 </script>
 
