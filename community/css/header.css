@@ -32,7 +32,6 @@ body{
 .dropdown{
     position: relative;
     display: inline-block;
-    width: 36px;
     height: 36px;
     left: 133px;
 }
@@ -40,11 +39,10 @@ body{
     display: none;
     position: absolute;
     top: 36px;
-    right: 0px;
+    right: -36px;
     background-color: #f0f0f0;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    width: 115px;
     line-height: 0;
 }
 .dropdown-element{
