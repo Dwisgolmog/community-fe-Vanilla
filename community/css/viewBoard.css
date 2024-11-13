@@ -130,7 +130,7 @@
     height: 242px;
     display: flex;
     flex-direction: column;
-    padding: 5%;
+    padding: 48px 64px 49px 64px;
     border-radius: 15px;
     text-align: center;
 }
