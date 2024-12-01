@@ -1,114 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/Login.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <title>Main</title>
-</head>
-<body>
-    <div class="header" >
-        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">아무 말 대잔치</a> 
-        <div class="dropdown">
-            <img src="./img/profile.jpeg" class="profile-icon" alt="Icon">
-            <div class="dropdown-menu">
-                <div class="dropdown-element"><a href="/users/info-edit">회원정보수정</a></div>
-                <div class="dropdown-element"><a href="/users/pwd-edit">비밀번호수정</a></div>
-                <div class="dropdown-element"><a href="/logout">로그아웃</a></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/Login.css" />
+        <link rel="stylesheet" href="./css/main.css" />
+        <title>Main</title>
+    </head>
+    <body>
+        <div class="header">
+            <a
+                href="/main"
+                style="
+                    font-size: 32px;
+                    font-weight: 400;
+                    text-decoration: none;
+                    color: black;
+                "
+                >아무 말 대잔치</a
+            >
+            <div class="dropdown">
+                <img src="./img/profile.jpeg" class="profile-icon" alt="Icon" />
+                <div class="dropdown-menu">
+                    <div class="dropdown-element">
+                        <a href="/users/info-edit">회원정보수정</a>
+                    </div>
+                    <div class="dropdown-element">
+                        <a href="/users/pwd-edit">비밀번호수정</a>
+                    </div>
+                    <div class="dropdown-element">
+                        <a href="/logout">로그아웃</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <hr style="margin: 0 auto; width: 100%;">
+        <hr style="margin: 0 auto; width: 100%" />
 
-    <div class="main-content">
-        <h2 style="font-size: 24px; font-weight: 400; text-align: center;">
-            안녕하세요,<br>
-            아무 말 대잔치 <strong>게시판</strong> 입니다.
-        </h2>
-        <div class="write">
-            <button class="write-btn" onclick="location.href='/board/write'">게시글 작성</button>
+        <div class="main-content">
+            <h2 style="font-size: 24px; font-weight: 400; text-align: center">
+                안녕하세요,<br />
+                아무 말 대잔치 <strong>게시판</strong> 입니다.
+            </h2>
+            <div class="write">
+                <button
+                    class="write-btn"
+                    onclick="location.href='/board/write'"
+                >
+                    게시글 작성
+                </button>
+            </div>
+
+            <div class="board" id="board-1">
+                <h2 style="margin-top: 1%">제목 1</h2>
+                <div class="board-info-container">
+                    <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
+                    <div class="board-date">2021-01-01 00:00:00</div>
+                </div>
+                <hr
+                    style="
+                        margin: 0 -3%;
+                        width: 105.7%;
+                        color: #00000029;
+                        opacity: 0.16;
+                    "
+                />
+                <div class="board-writer">
+                    <img src="./img/profile.jpeg" />
+                    <div
+                        style="margin-left: 10px; size: 15px; font-weight: 700"
+                    >
+                        더미 작성자
+                    </div>
+                </div>
+            </div>
+
+            <div class="board" id="board-2">
+                <h2 style="margin-top: 1%">제목 1</h2>
+                <div class="board-info-container">
+                    <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
+                    <div class="board-date">2021-01-01 00:00:00</div>
+                </div>
+                <hr
+                    style="
+                        margin: 0 -3%;
+                        width: 105.7%;
+                        color: #00000029;
+                        opacity: 0.16;
+                    "
+                />
+                <div class="board-writer">
+                    <img src="./img/profile.jpeg" />
+                    <div
+                        style="margin-left: 10px; size: 15px; font-weight: 700"
+                    >
+                        더미 작성자
+                    </div>
+                </div>
+            </div>
+
+            <div class="board" id="board-3">
+                <h2 style="margin-top: 1%">제목 1</h2>
+                <div class="board-info-container">
+                    <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
+                    <div class="board-date">2021-01-01 00:00:00</div>
+                </div>
+                <hr
+                    style="
+                        margin: 0 -3%;
+                        width: 105.7%;
+                        color: #00000029;
+                        opacity: 0.16;
+                    "
+                />
+                <div class="board-writer">
+                    <img src="./img/profile.jpeg" />
+                    <div
+                        style="margin-left: 10px; size: 15px; font-weight: 700"
+                    >
+                        더미 작성자
+                    </div>
+                </div>
+            </div>
+
+            <div class="board" id="board-4">
+                <h2 style="margin-top: 1%">제목 1</h2>
+                <div class="board-info-container">
+                    <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
+                    <div class="board-date">2021-01-01 00:00:00</div>
+                </div>
+                <hr
+                    style="
+                        margin: 0 -3%;
+                        width: 105.7%;
+                        color: #00000029;
+                        opacity: 0.16;
+                    "
+                />
+                <div class="board-writer">
+                    <img src="./img/profile.jpeg" />
+                    <div
+                        style="margin-left: 10px; size: 15px; font-weight: 700"
+                    >
+                        더미 작성자
+                    </div>
+                </div>
+            </div>
         </div>
-        
+    </body>
+    <script>
+        const board = document.querySelector('.board');
 
-        <div class="board" id="board-1">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
+        board.addEventListener('click', () => {
+            window.location.href = '/board/view';
+        });
 
-        <div class="board" id="board-2">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
-
-        <div class="board" id="board-3">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
-
-        <div class="board" id="board-4">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
-    </div>
-</body>
-<script>
-    const board = document.querySelector('.board');
-
-    board.addEventListener('click', () => {
-        window.location.href = '/board/view'
-    });
-    
-
-
-    const profileIcon = document.querySelector('.profile-icon');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const dropdownElement = document.querySelector('.dropdown-element');
-    profileIcon.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    profileIcon.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-    dropdownMenu.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    dropdownMenu.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-</script>
+        const profileIcon = document.querySelector('.profile-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdownElement = document.querySelector('.dropdown-element');
+        profileIcon.addEventListener('mouseenter', () => {
+            dropdownMenu.style.display = 'block';
+        });
+        profileIcon.addEventListener('mouseleave', () => {
+            dropdownMenu.style.display = 'none';
+        });
+        dropdownMenu.addEventListener('mouseenter', () => {
+            dropdownMenu.style.display = 'block';
+        });
+        dropdownMenu.addEventListener('mouseleave', () => {
+            dropdownMenu.style.display = 'none';
+        });
+    </script>
 </html>
