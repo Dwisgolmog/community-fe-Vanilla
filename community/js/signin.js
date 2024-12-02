@@ -150,9 +150,6 @@ signupBtn.addEventListener('click', async event => {
         formData.append('password', password);
         formData.append('nickname', nickname);
 
-        for (const [key, value] of formData.entries()) {
-            console.log(`${key}:`, value);
-        }
         if (
             checkEmail &&
             checkPassword &&
@@ -174,8 +171,6 @@ signupBtn.addEventListener('click', async event => {
             alert('입력값이 유효하지 않습니다!');
         }
     } catch (e) {
-        console.log('what?');
-        console.log(e.response);
         if (e.response.data.message == '이메일이 중복되었습니다.') {
             emailHelperText.style.display = 'flex';
             inputEmail.style.marginBottom = '0px';

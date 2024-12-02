@@ -27,7 +27,7 @@ app.get("/board/write", (req, res) => {
 });
 
 // NOTE : 게시글 상세 보기
-app.get("/board/view", (req, res) => {
+app.get("/board/view/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "../community/board/viewBoard.html"));
 });
 
