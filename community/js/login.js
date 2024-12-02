@@ -68,10 +68,16 @@ const loginBtn = document.querySelector('.login-button');
 loginBtn.addEventListener('click', async () => {
     try {
         if (checkEmail && checkPassword) {
-            const response = await axios.post(url, {
-                email: email,
-                password: password,
-            });
+            const response = await axios.post(
+                url,
+                {
+                    email: email,
+                    password: password,
+                },
+                {
+                    withCredentials: true,
+                },
+            );
 
             if (response.status === 200) {
                 alert('로그인 성공!');
