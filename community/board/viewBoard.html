@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/viewBoard.css">
     <title>Main</title>
@@ -28,19 +29,19 @@
 
     <div class="main-content">
         <div class="header-content">
-            <h2>제목 1</h2>
+            <h2 id="title">제목 1</h2>
             <div class="board-info-container">
                 <div class="board-info">
                     <div
                         style="display: flex; align-items: center; margin-right: 24px; font-size: 15px; font-weight: 700;">
-                        <img style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;"
+                        <img id="writerProfile" style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;"
                             src="../../img/profile.jpeg">
-                        더미 작성자 1
+                        <span id="nickname">더미 작성자 1</span>
                     </div>
-                    2021-01-01 00:00:00
+                    <span id="board_date">2021-01-01 00:00:00</span>
                 </div>
 
-                <div class="eidt-board-btn">
+                <div class="edit-board-btn">
                     <button style="margin-right: 8px;" onclick="location.href='/board/edit'">수정</button>
                     <button id="board-remove-btn">삭제</button>
                 </div>
@@ -49,28 +50,23 @@
         <hr style="width: 592px; color: #00000029; opacity: 0.16;">
 
         <div class="box" style="width: 544px; height: 306px; background-color: #D9D9D9; margin: 24px;">
-
+            <img id="contentImg" class="content-img" src="../../img/profile.jpeg">
         </div>
-        <div class="textBox">
-            무엇을 얘기할까요? 아무말이라면, 삶은 항상 놀라운 모험이라고 생각합니다. 우리는 매일 새로운 경험을 하고 배우며 성장합니다. 때로는 어려움과 도전이 있지만, 그것들이 우리를 더 강하고 지혜롭게
-            만듭니다. 또한 우리는 주변의 사람들과 연결되며 사랑과 지지를 받습니다. 그래서 우리의 삶은 소중하고 의미가 있습니다.<br>
-            자연도 아름다운 이야기입니다. 우리 주변의 자연은 끝없는 아름다움과 신비로움을 담고 있습니다. 산, 바다, 숲, 하늘 등 모든 것이 우리를 놀라게 만들고 감동시킵니다. 자연은 우리의 생명과
-            안정을 지키며 우리에게 힘을 주는 곳입니다.<br>
-            마지막으로, 지식을 향한 탐구는 항상 흥미로운 여정입니다. 우리는 끝없는 지식의 바다에서 배우고 발견할 수 있으며, 이것이 우리를 더 깊이 이해하고 세상을 더 넓게 보게 해줍니다.<br>
-            그런 의미에서, 삶은 놀라움과 경이로움으로 가득 차 있습니다. 새로운 경험을 즐기고 항상 앞으로 나아가는 것이 중요하다고 생각합니다.<br>
+        <div id="content" class="textBox">
+            흠... 이 텍스트가 보인다는건 뭐가 문제가 있는거 같군요
         </div>
 
         <div class="board-stats">
-            <div class="status-box">
-                123<br>
+            <div  class="status-box">
+                <span id="likeCount">123</span>
                 <span style="font-size: 16px;">좋아요수</span>
             </div>
-            <div class="status-box">
-                123<br>
+            <div  class="status-box">
+                <span id="viewCount">123</span>
                 <span style="font-size: 16px;">조회수</span>
             </div>
-            <div class="status-box">
-                123<br>
+            <div  class="status-box">
+                <span id="commentCount">123</span>
                 <span style="font-size: 16px;">댓글</span>
             </div>
         </div>
@@ -78,94 +74,14 @@
         <hr style="width: 592px; margin: 33px; color: #00000029; opacity: 0.16;">
 
         <div class="comment-box">
-            <textarea placeholder="댓글을 남겨주세요!"
-                style="width: 544px; height: 94px; margin: 15px 15px 0px 15px; border: none;">
-            </textarea>
+            <textarea id="input-comment" placeholder="댓글을 남겨주세요!"
+                style="width: 544px; height: 94px; margin: 15px 15px 0px 15px; border: none; resize: none;"></textarea>
             <hr style="width: 592px; margin: 0; color: #00000029; opacity: 0.16;">
             <div style="width: 100%; height: 54px; display: flex; justify-content: flex-end; align-items: center;">
-                <button>댓글 등록</button>
-            </div>
-        </div>
-
-        <div class="comment">
-            <div class="comment-info">
-                <div class="comment-title">
-                    <img style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;"
-                        src="../../img/profile.jpeg">
-                    <span style="margin-right: 24px;">더미 작성자 1</span>
-                    <span>2021-01-01 00:00:00</span>
-                </div>
-                <div class="comment-content">
-                    댓글 내용
-                </div>
-            </div>
-            <div class="comment-btn">
-                <button>수정</button>
-                <button style="margin-left: 8px;" id="remove-comment">삭제</button>
-            </div>
-        </div>
-
-
-        <div class="comment">
-            <div class="comment-info">
-                <div class="comment-title">
-                    <img style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;"
-                        src="../../img/profile.jpeg">
-                    <span style="margin-right: 24px;">더미 작성자 1</span>
-                    <span>2021-01-01 00:00:00</span>
-                </div>
-                <div class="comment-content">
-                    댓글 내용
-                </div>
-            </div>
-            <div class="comment-btn">
-                <button>수정</button>
-                <button style="margin-left: 8px;" id="remove-comment">삭제</button>
-            </div>
-        </div>
-
-
-        <div class="comment">
-            <div class="comment-info">
-                <div class="comment-title">
-                    <img style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;"
-                        src="../../img/profile.jpeg">
-                    <span style="margin-right: 24px;">더미 작성자 1</span>
-                    <span>2021-01-01 00:00:00</span>
-                </div>
-                <div class="comment-content">
-                    댓글 내용
-                </div>
-            </div>
-            <div class="comment-btn">
-                <button>수정</button>
-                <button style="margin-left: 8px;" id="remove-comment">삭제</button>
-            </div>
-        </div>
-
-
-        <div class="comment">
-            <div class="comment-info">
-                <div class="comment-title">
-                    <img style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;"
-                        src="../../img/profile.jpeg">
-                    <span style="margin-right: 24px;">더미 작성자 1</span>
-                    <span>2021-01-01 00:00:00</span>
-                </div>
-                <div class="comment-content">
-                    댓글 내용
-                </div>
-            </div>
-            <div class="comment-btn">
-                <button>수정</button>
-                <button style="margin-left: 8px;" id="remove-comment">삭제</button>
+                <button id="add-comment">댓글 등록</button>
             </div>
         </div>
     </div>
-
-
-
-
 
 
     <div class="board-modal-container">
@@ -190,10 +106,13 @@
         </div>
     </div>
 
-
-
 </body>
+<script src="../../js/dropdownMenu.js"></script>
+<script src="../../js//getProfileImg.js"></script>
+<script src="../../js/viewBoard.js"></script>
 <script>
+    
+    //NOTE:board 모달창
     const boardRemoveBtn = document.querySelector('#board-remove-btn')
     const boardModal = document.querySelector('.board-modal-container')
     const cancleModal = document.querySelector('.modal-btn1')
@@ -205,40 +124,6 @@
     cancleModal.addEventListener('click', () => {
         boardModal.style.display = 'none'
     })
-
-    const commentRemoveBtns = document.querySelectorAll('#remove-comment')
-    const commentModal = document.querySelector('.comment-modal-container')
-    const cancleModal2 = document.querySelector('.modal-btn3')
-
-    commentRemoveBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            commentModal.style.display = 'flex';
-        });
-    });
-
-    cancleModal2.addEventListener('click', () => {
-        commentModal.style.display = 'none'
-    })
-
-
-
-
-
-    const profileIcon = document.querySelector('.profile-icon');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const dropdownElement = document.querySelector('.dropdown-element');
-    profileIcon.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    profileIcon.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-    dropdownMenu.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    dropdownMenu.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
+    
 </script>
-
 </html>

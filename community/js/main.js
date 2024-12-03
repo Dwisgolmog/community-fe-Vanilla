@@ -1,5 +1,5 @@
-const userInfoUrl = 'http://localhost:5050/api/users';
 const boardInfoUrl = 'http://localhost:5050/api/boards?page=1&limit=10';
+axios.defaults.withCredentials = true;
 
 const formatCount = count => {
     if (count > 1000) {
@@ -10,25 +10,22 @@ const formatCount = count => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-    axios.defaults.withCredentials = true;
-    const { data: userInfo } = await axios.get(userInfoUrl);
-    document.querySelector('.profile-icon').src = userInfo.data.profile_img;
+    try {
+        const {
+            data: { data: boardsInfo },
+        } = await axios.get(boardInfoUrl);
 
-    const {
-        data: { data: boardsInfo },
-    } = await axios.get(boardInfoUrl);
+        const container = document.querySelector('.main-content');
 
-    const container = document.querySelector('.main-content');
-
-    boardsInfo.forEach(board => {
-        const boardElement = document.createElement('div');
-        const boardTitle =
-            board.title.length > 26
-                ? board.title.substring(0, 26) + '...'
-                : board.title;
-        boardElement.className = 'board';
-        boardElement.id = `board-${board.board_id}`;
-        boardElement.innerHTML = `
+        boardsInfo.forEach(board => {
+            const boardElement = document.createElement('div');
+            const boardTitle =
+                board.title.length > 26
+                    ? board.title.substring(0, 26) + '...'
+                    : board.title;
+            boardElement.className = 'board';
+            boardElement.id = `board-${board.board_id}`;
+            boardElement.innerHTML = `
             <h2 style="margin-top: 1%;">${boardTitle}</h2>
             <div class="board-info-container">
                 <div class="board-info">
@@ -43,10 +40,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         `;
 
-        boardElement.addEventListener('click', () => {
-            window.location.href = `/board/view/${board.board_id}`;
-        });
+            boardElement.addEventListener('click', () => {
+                window.location.href = `/board/view/${board.board_id}`;
+            });
 
-        container.appendChild(boardElement);
-    });
+            container.appendChild(boardElement);
+        });
+    } catch (e) {
+        console.log(e);
+        if (e.status == 401) {
+            alert('세션 만료! 다시 로그인해주세요!');
+            window.location.href = '/';
+        }
+    }
 });
