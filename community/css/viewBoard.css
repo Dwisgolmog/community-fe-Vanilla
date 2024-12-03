@@ -26,7 +26,7 @@
     font-size: 24px;
     font-weight: 700;
 }
-.eidt-board-btn button{
+.edit-board-btn button{
     width: 50px;
     height: 27px;
     border: 1px solid #ACA0EB;
@@ -160,4 +160,10 @@ button{
 button:active{
     background-color: #555;
     transform: scale(0.95);
+}
+.content-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
 }

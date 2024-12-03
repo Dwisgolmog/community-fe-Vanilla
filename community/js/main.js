@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     } catch (e) {
         console.log(e);
-        if (e.status == 401) window.location.href = '/';
+        if (e.status == 401) {
+            alert('세션 만료! 다시 로그인해주세요!');
+            window.location.href = '/';
+        }
     }
 });
