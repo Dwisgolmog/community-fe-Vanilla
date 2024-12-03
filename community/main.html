@@ -35,23 +35,9 @@
         
     </div>
 </body>
-<script>
-    //NOTE:프로필 이미지 드롭다운 메뉴
-    const profileIcon = document.querySelector('.profile-icon');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const dropdownElement = document.querySelector('.dropdown-element');
-    profileIcon.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    profileIcon.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-    dropdownMenu.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    dropdownMenu.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-</script>
+    <!-- NOTE:헤더 프로필 이미지 드롭다운 메뉴 -->
+    <script src="./js//dropdownMenu.js"></script>
+    <!-- NOTE:헤더 프로필 이미지 가져오기 -->
+    <script src="./js/getProfileImg.js"></script>
 <script src="./js/main.js"></script>
 </html>

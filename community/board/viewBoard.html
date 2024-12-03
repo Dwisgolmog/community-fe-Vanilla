@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/viewBoard.css">
     <title>Main</title>
@@ -194,6 +195,7 @@
 
 </body>
 <script>
+    //모달창
     const boardRemoveBtn = document.querySelector('#board-remove-btn')
     const boardModal = document.querySelector('.board-modal-container')
     const cancleModal = document.querySelector('.modal-btn1')
@@ -219,26 +221,8 @@
     cancleModal2.addEventListener('click', () => {
         commentModal.style.display = 'none'
     })
-
-
-
-
-
-    const profileIcon = document.querySelector('.profile-icon');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const dropdownElement = document.querySelector('.dropdown-element');
-    profileIcon.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    profileIcon.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-    dropdownMenu.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    dropdownMenu.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
 </script>
-
+<script src="../../js/dropdownMenu.js"></script>
+<script src="../../js//getProfileImg.js"></script>
+<script src="../../js/viewBoard.js"></script>
 </html>
