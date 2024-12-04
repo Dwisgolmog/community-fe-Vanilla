@@ -2,7 +2,6 @@ const url = window.location.href;
 const boardNumber = url.substring(url.lastIndexOf('/') + 1);
 const boardInfoUrl = `http://localhost:5050/api/boards/${boardNumber}`;
 const boardCommentUrl = `http://localhost:5050/api/boards/${boardNumber}/comments`;
-const removeCommentUrl = `http://localhost:5050/api/boards/${boardNumber}/comments/`;
 let removeCommentId; //댓글 삭제시 댓글 번호 저장
 axios.defaults.withCredentials = true;
 
@@ -45,7 +44,7 @@ const loadBoardInfo = async userInfo => {
 
     //NOTE:게시글과 로그인한 유저가 다를시 버튼 안보이게 처리함
     const editBoardBtn = document.querySelector('.edit-board-btn');
-    if (user_id !== userInfo.data.user_id) {
+    if (user_id != userInfo.data.user_id) {
         editBoardBtn.style.display = 'none';
     }
 };
@@ -113,32 +112,46 @@ const loadComments = async userInfo => {
     });
 };
 
+//NOTE: 댓글 수정
+const handleEditComment = commentId => {
+    const commentElement = document.querySelector(`#comment-${commentId}`);
+    const commentContent =
+        commentElement.querySelector('.comment-content').innerText;
+    const inputText = document.querySelector('#input-comment');
+    const addCommentBtn = document.querySelector('#add-comment');
 
-        cancleModal2.addEventListener('click', () => {
-            commentModal.style.display = 'none';
-        });
-    } catch (e) {
-        console.log(e);
-        if (e.status == 401) {
-            alert('세션 만료! 다시 로그인해주세요!');
-            window.location.href = '/';
-        } else if (e.status == 404) {
-            alert('데이터를 찾을 수 없습니다!');
-        }
-    }
-});
+    inputText.value = commentContent;
+    addCommentBtn.textContent = '댓글 수정';
+    addCommentBtn.dataset.editId = commentId;
+};
 
-//NOTE: 댓글 작성
+//NOTE: 댓글 작성 & 수정
 document.querySelector('#add-comment').addEventListener('click', async () => {
     const inputText = document.querySelector('#input-comment');
     const comment = inputText.value.trim();
+    const addCommentBtn = document.querySelector('#add-comment');
+    const editCommentId = addCommentBtn.dataset.editId;
+
     if (!comment) return alert('댓글 내용을 입력해주세요!');
 
     try {
-        const response = await axios.post(boardCommentUrl, { comment });
-        if (response.status === 201) {
-            alert('댓글 작성 완료!');
-            location.reload();
+        //NOTE: 댓글 수정
+        if (editCommentId) {
+            const rseponse = await axios.patch(
+                `${boardCommentUrl}/${editCommentId}`,
+                { comment },
+            );
+            if (rseponse.status == 201) {
+                alert('댓글 수정 완료!');
+                location.reload();
+            }
+        } else {
+            //NOTE: 댓글 작성
+            const response = await axios.post(boardCommentUrl, { comment });
+            if (response.status == 201) {
+                alert('댓글 작성 완료!');
+                location.reload();
+            }
         }
     } catch (e) {
         handleError(e);
@@ -148,8 +161,8 @@ document.querySelector('#add-comment').addEventListener('click', async () => {
 //NOTE: 댓글 삭제 요청
 const deleteComment = async commentId => {
     try {
-        const response = await axios.delete(removeCommentUrl + commentId);
-        if (response.status === 201) {
+        const response = await axios.delete(`${boardCommentUrl}/${commentId}`);
+        if (response.status == 201) {
             alert('댓글 삭제 완료!');
             location.reload();
         }
@@ -160,10 +173,10 @@ const deleteComment = async commentId => {
 
 const handleError = e => {
     const status = e.response?.status;
-    if (status === 401) {
+    if (status == 401) {
         alert('세션 만료! 다시 로그인해주세요!');
         window.location.href = '/';
-    } else if (status === 404) {
+    } else if (status == 404) {
         alert('데이터를 찾을 수 없습니다!');
     } else {
         console.error(e);
