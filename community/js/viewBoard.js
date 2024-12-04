@@ -3,7 +3,6 @@ const boardNumber = url.substring(url.lastIndexOf('/') + 1);
 const boardInfoUrl = `http://localhost:5050/api/boards/${boardNumber}`;
 const boardCommentUrl = `http://localhost:5050/api/boards/${boardNumber}/comments`;
 let removeCommentId; //댓글 삭제시 댓글 번호 저장
-axios.defaults.withCredentials = true;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -35,8 +34,10 @@ const loadBoardInfo = async userInfo => {
     document.querySelector('#writerProfile').src = profile_img;
     document.querySelector('#nickname').innerText = nickname;
     document.querySelector('#board_date').innerText = board_date;
-    document.querySelector('#contentImg').src = content_img;
-    document.querySelector('#contentImg').style.display = 'block';
+    if (content_img) {
+        document.querySelector('#contentImg').src = content_img;
+        document.querySelector('#contentImg').style.display = 'block';
+    }
     document.querySelector('#content').innerText = content;
     document.querySelector('#likeCount').innerText = like_count;
     document.querySelector('#viewCount').innerText = view_count;
