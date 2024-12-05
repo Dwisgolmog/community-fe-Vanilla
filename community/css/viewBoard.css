@@ -167,3 +167,19 @@ button:active{
     object-fit: cover;
     display: none;
 }
+/* 좋아요 상태를 위한 클래스 */
+.status-box.liked {
+    background-color: #ffe0e0; /* 연한 분홍색 */
+    color: #e60023; /* 붉은 텍스트 */
+    border: 2px solid #e60023; /* 붉은 테두리 */
+    box-shadow: 0px 4px 8px rgba(230, 0, 35, 0.3); /* 그림자 효과 */
+    transform: scale(1.05); /* 약간 확대 */
+}
+/* 좋아요 상태의 버튼 스타일링 */
+.status-box.liked span {
+    font-weight: 700; /* 강조 */
+}
+/* 좋아요 전환 애니메이션 */
+.status-box {
+    transition: all 0.3s ease-in-out; /* 부드러운 전환 */
+}

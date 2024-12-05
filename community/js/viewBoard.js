@@ -2,14 +2,17 @@ const url = window.location.href;
 const boardNumber = url.substring(url.lastIndexOf('/') + 1);
 const boardInfoUrl = `http://localhost:5050/api/boards/${boardNumber}`;
 const boardCommentUrl = `http://localhost:5050/api/boards/${boardNumber}/comments`;
+const boardLikeUrl = `http://localhost:5050/api/boards/like/${boardNumber}`;
+const boardunLikeUrl = `http://localhost:5050/api/boards/unlike/${boardNumber}`;
 let removeCommentId; //댓글 삭제시 댓글 번호 저장
-axios.defaults.withCredentials = true;
+let liked;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const { data: userInfo } = await axios.get(userInfoUrl);
         await loadBoardInfo(userInfo);
         await loadComments(userInfo);
+        await loadLike();
     } catch (e) {
         handleError(e);
     }
@@ -19,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 const loadBoardInfo = async userInfo => {
     const { data: boardInfo } = await axios.get(boardInfoUrl);
     const {
+        board_id,
         title,
         profile_img,
         nickname,
@@ -35,12 +39,17 @@ const loadBoardInfo = async userInfo => {
     document.querySelector('#writerProfile').src = profile_img;
     document.querySelector('#nickname').innerText = nickname;
     document.querySelector('#board_date').innerText = board_date;
-    document.querySelector('#contentImg').src = content_img;
-    document.querySelector('#contentImg').style.display = 'block';
+    if (content_img) {
+        document.querySelector('#contentImg').src = content_img;
+        document.querySelector('#contentImg').style.display = 'block';
+    }
     document.querySelector('#content').innerText = content;
     document.querySelector('#likeCount').innerText = like_count;
     document.querySelector('#viewCount').innerText = view_count;
     document.querySelector('#commentCount').innerText = comment_count;
+    document.querySelector('#board-edit-btn').onclick = () => {
+        location.href = `/board/edit/${board_id}`;
+    };
 
     //NOTE:게시글과 로그인한 유저가 다를시 버튼 안보이게 처리함
     const editBoardBtn = document.querySelector('.edit-board-btn');
@@ -52,6 +61,9 @@ const loadBoardInfo = async userInfo => {
 //NOTE:댓글 조회
 const loadComments = async userInfo => {
     const { data: commentInfo } = await axios.get(boardCommentUrl);
+
+    //NOTE:댓글이 없을시 종료
+    if (!commentInfo.data || commentInfo.data.length === 0) return;
 
     const container = document.querySelector('.sub-content');
 
@@ -171,12 +183,65 @@ const deleteComment = async commentId => {
     }
 };
 
+//NOTE: 게시글 삭제 요청
+document.querySelector('.modal-btn2').addEventListener('click', async () => {
+    try {
+        const response = await axios.delete(boardInfoUrl);
+
+        if (response.status == 201) {
+            alert('게시물 삭제 완료!');
+            location.href = '/main';
+        }
+    } catch (e) {
+        handleEditComment(e);
+    }
+});
+
+//NOTE: 좋아요 유무 표시
+const loadLike = async () => {
+    try {
+        const likeBox = document.querySelector('#like-count');
+        const response = await axios.get(boardLikeUrl);
+        if (response.data.data) {
+            likeBox.classList.add('liked');
+            liked = true;
+        } else {
+            likeBox.classList.remove('liked');
+            liked = false;
+        }
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+//NOTE: 좋아요 증가 & 감소
+document.querySelector('#like-count').addEventListener('click', async () => {
+    try {
+        const likeBox = document.querySelector('#like-count');
+        const likeCountElement = document.querySelector('#likeCount'); // span 요소 선택
+        let likeCount = parseInt(likeCountElement.textContent, 10);
+
+        //NOTE: 안눌러져 있으면 -> 증가 요청, 좋아요가 눌러져 있으면 -> 감소 요청
+        liked = !liked;
+        if (liked) {
+            likeCount += 1;
+            likeCountElement.textContent = likeCount;
+            const response = await axios.post(boardLikeUrl);
+            if (response.status == 201) likeBox.classList.add('liked');
+        } else {
+            likeCount -= 1;
+            likeCountElement.textContent = likeCount;
+            const response = await axios.post(boardunLikeUrl);
+            if (response.status == 201) likeBox.classList.remove('liked');
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
+
 const handleError = e => {
     const status = e.response?.status;
-    if (status == 401) {
-        alert('세션 만료! 다시 로그인해주세요!');
-        window.location.href = '/';
-    } else if (status == 404) {
+    if (status == 404) {
         alert('데이터를 찾을 수 없습니다!');
     } else {
         console.error(e);
