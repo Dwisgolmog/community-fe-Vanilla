@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/editUserInfo.css">
     <title>Main</title>
@@ -39,10 +40,10 @@
 
         <div class="editBox">
             <p style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">이메일</p>
-            <p style="font-size: 14px; font-weight: 400; margin-bottom: 16px;">20191105@vision.hoseo.edu</p>
+            <p id="user-email" style="font-size: 14px; font-weight: 400; margin-bottom: 16px;">20191105@vision.hoseo.edu</p>
             <p style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">닉네임</p>
-            <input id="nickname" type="text">
-            <p style="font-size: 14px; font-weight: 400; color: red;">*helper text</p>
+            <input id="nickname" maxlength="10" type="text">
+            <p id="helper-text" style="font-size: 14px; font-weight: 400; color: red; display: none;">*helper text</p>
         </div>
 
         <button class="edit-btn">수정하기</button>
@@ -52,6 +53,7 @@
     </div>
 
 
+    <!-- 모달창 -->
     <div class="modal-container">
         <div class="modal">
             <h2 style="font-size: 24px; font-weight: 700; line-height: 28px;">회원탈퇴 하시겠습니까?</h2>
@@ -66,9 +68,9 @@
 
 </body>
 <script>
+    //NOTE:이미지 업로드 아무스 호버 효과
     const uploadButton = document.querySelector('.btn-upload');
     const profileImg = document.getElementById('profileImg');
-
     uploadButton.addEventListener('mouseenter', () => {
         profileImg.style.zIndex = '0';
         profileImg.style.filter = 'brightness(0.35)';
@@ -79,39 +81,18 @@
         profileImg.style.filter = '';
     });
 
-
-    const nickname = document.getElementById('nickname')
-    nickname.value = "리로이 젠킨스" 
-
+    //NOTE:모델창 효과
     const delId = document.querySelector('.del-id2')
     const modalContainer = document.querySelector('.modal-container')
     const cancleModal = document.querySelector('.modal-btn1');
-    const okModal = document.querySelector('.modal-btn2'); //회원 탈퇴 확인 버튼
     delId.addEventListener('click',()=>{
         modalContainer.style.display = 'flex';
     })
     cancleModal.addEventListener('click',()=>{
         modalContainer.style.display = 'none';
     })
-    okModal.addEventListener('click',()=>{
-        //회원탈퇴 로직 수행
-    })
-
-    const profileIcon = document.querySelector('.profile-icon');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const dropdownElement = document.querySelector('.dropdown-element');
-    profileIcon.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    profileIcon.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-    dropdownMenu.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    dropdownMenu.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
 </script>
-
+<script src="../js/dropdownMenu.js"></script>
+<script src="../js//getProfileImg.js"></script>
+<script src="../js/editUser.js"></script>
 </html>

@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (e.response.status == 401) {
             alert('세션 만료! 다시 로그인해주세요!');
             window.location.href = '/';
+        } else if (e.response.status == 404) {
+            alert('회원 정보를 읽을 수 없습니다. 다시 로그인 해주세요!');
+            location.href = '/';
         }
     }
 });
