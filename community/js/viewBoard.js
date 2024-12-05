@@ -2,13 +2,17 @@ const url = window.location.href;
 const boardNumber = url.substring(url.lastIndexOf('/') + 1);
 const boardInfoUrl = `http://localhost:5050/api/boards/${boardNumber}`;
 const boardCommentUrl = `http://localhost:5050/api/boards/${boardNumber}/comments`;
+const boardLikeUrl = `http://localhost:5050/api/boards/like/${boardNumber}`;
+const boardunLikeUrl = `http://localhost:5050/api/boards/unlike/${boardNumber}`;
 let removeCommentId; //댓글 삭제시 댓글 번호 저장
+let liked;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const { data: userInfo } = await axios.get(userInfoUrl);
         await loadBoardInfo(userInfo);
         await loadComments(userInfo);
+        await loadLike();
     } catch (e) {
         handleError(e);
     }
@@ -190,6 +194,48 @@ document.querySelector('.modal-btn2').addEventListener('click', async () => {
         }
     } catch (e) {
         handleEditComment(e);
+    }
+});
+
+//NOTE: 좋아요 유무 표시
+const loadLike = async () => {
+    try {
+        const likeBox = document.querySelector('#like-count');
+        const response = await axios.get(boardLikeUrl);
+        if (response.data.data) {
+            likeBox.classList.add('liked');
+            liked = true;
+        } else {
+            likeBox.classList.remove('liked');
+            liked = false;
+        }
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+//NOTE: 좋아요 증가 & 감소
+document.querySelector('#like-count').addEventListener('click', async () => {
+    try {
+        const likeBox = document.querySelector('#like-count');
+        const likeCountElement = document.querySelector('#likeCount'); // span 요소 선택
+        let likeCount = parseInt(likeCountElement.textContent, 10);
+
+        //NOTE: 안눌러져 있으면 -> 증가 요청, 좋아요가 눌러져 있으면 -> 감소 요청
+        liked = !liked;
+        if (liked) {
+            likeCount += 1;
+            likeCountElement.textContent = likeCount;
+            const response = await axios.post(boardLikeUrl);
+            if (response.status == 201) likeBox.classList.add('liked');
+        } else {
+            likeCount -= 1;
+            likeCountElement.textContent = likeCount;
+            const response = await axios.post(boardunLikeUrl);
+            if (response.status == 201) likeBox.classList.remove('liked');
+        }
+    } catch (e) {
+        console.log(e);
     }
 });
 
