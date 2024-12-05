@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/editBoard.css">
     <title>Main</title>
@@ -20,7 +21,7 @@
             <div class="dropdown-menu">
                 <div class="dropdown-element"><a href="/users/info-edit">회원정보수정</a></div>
                 <div class="dropdown-element"><a href="/users/pwd-edit">비밀번호수정</a></div>
-                <div class="dropdown-element"><a href="/logout">로그아웃</a></div>
+                <div id="logout-btn" class="dropdown-element"><a>로그아웃</a></div>
             </div>
         </div>
     </div>
@@ -31,7 +32,7 @@
     <div class="title">
         <p style="margin-left: 24px; margin-bottom: 16px; font-size: 16px; font-weight: 700;">제목*</p>
         <hr>
-        <input type="text" placeholder="제목을 입력해주세요.(최대 26글자)">
+        <input id="input-title" maxlength="26" type="text" placeholder="제목을 입력해주세요.(최대 26글자)">
         <hr style="margin-bottom: 0;">
     </div>
 
@@ -44,26 +45,12 @@
 
     <div class="editImg">
         <p style="font-size: 15px; font-weight: 700; margin-top: 0;">이미지*</p>
-        <input style="font-size: 14px; font-weight: 400;" type="file" accept="image/*">
+        <input id="content-img" style="font-size: 14px; font-weight: 400;" type="file" accept="image/*">
     </div>
 
     <button class="edit-btn">완료</button>
 </body>
-<script>
-    const profileIcon = document.querySelector('.profile-icon');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const dropdownElement = document.querySelector('.dropdown-element');
-    profileIcon.addEventListener('mouseenter', () => {
-        dropdownMenu.style.display = 'block';
-    })
-    profileIcon.addEventListener('mouseleave', () => {
-        dropdownMenu.style.display = 'none';
-    })
-    dropdownMenu.addEventListener('mouseenter', () => {
-        dropdownMenu.style.display = 'block';
-    })
-    dropdownMenu.addEventListener('mouseleave', () => {
-        dropdownMenu.style.display = 'none';
-    })
-</script>
+<script src="../js/dropdownMenu.js"></script>
+<script src="../js//getProfileImg.js"></script>
+<script src="../js/writeBoard.js"></script>
 </html>

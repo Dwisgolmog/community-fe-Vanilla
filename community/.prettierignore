@@ -1,0 +1,13 @@
+# 모든 HTML 파일 무시
+**/*.html
+
+# 모든 CSS 파일 무시
+**/*.css
+
+# 특정 폴더 무시 (예: `board`와 `userInfo` 폴더)
+board/*
+userInfo/*
+
+# 특정 파일 무시
+package.json
+package-lock.json

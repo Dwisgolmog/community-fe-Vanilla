@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/Login.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -17,7 +18,7 @@
             <div class="dropdown-menu">
                 <div class="dropdown-element"><a href="/users/info-edit">회원정보수정</a></div>
                 <div class="dropdown-element"><a href="/users/pwd-edit">비밀번호수정</a></div>
-                <div class="dropdown-element"><a href="/logout">로그아웃</a></div>
+                <div id="logout-btn" class="dropdown-element"><a>로그아웃</a></div>
             </div>
         </div>
     </div>
@@ -32,83 +33,11 @@
             <button class="write-btn" onclick="location.href='/board/write'">게시글 작성</button>
         </div>
         
-
-        <div class="board" id="board-1">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
-
-        <div class="board" id="board-2">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
-
-        <div class="board" id="board-3">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
-
-        <div class="board" id="board-4">
-            <h2 style="margin-top: 1%;">제목 1</h2>
-            <div class="board-info-container">
-                <div class="board-info">좋아요 0 댓글 0 조회수 0</div>
-                <div class="board-date">2021-01-01 00:00:00</div>
-            </div>
-            <hr style="margin: 0 -3%; width: 105.7%; color: #00000029; opacity: 0.16;">
-            <div class="board-writer">
-                <img src="./img/profile.jpeg"> 
-                <div style="margin-left: 10px; size: 15px; font-weight: 700;">더미 작성자</div>
-            </div>
-        </div>
     </div>
 </body>
-<script>
-    const board = document.querySelector('.board');
-
-    board.addEventListener('click', () => {
-        window.location.href = '/board/view'
-    });
-    
-
-
-    const profileIcon = document.querySelector('.profile-icon');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    const dropdownElement = document.querySelector('.dropdown-element');
-    profileIcon.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    profileIcon.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-    dropdownMenu.addEventListener('mouseenter',()=>{
-        dropdownMenu.style.display = 'block';
-    })
-    dropdownMenu.addEventListener('mouseleave',()=>{
-        dropdownMenu.style.display = 'none';
-    })
-</script>
+    <!-- NOTE:헤더 프로필 이미지 드롭다운 메뉴 -->
+    <script src="./js//dropdownMenu.js"></script>
+    <!-- NOTE:헤더 프로필 이미지 가져오기 -->
+    <script src="./js/getProfileImg.js"></script>
+<script src="./js/main.js"></script>
 </html>

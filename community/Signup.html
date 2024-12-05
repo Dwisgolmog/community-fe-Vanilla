@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./css/Login.css">
-    <link rel="stylesheet" href="./css/Singin.css">
+    <link rel="stylesheet" href="./css/Singup.css">
     <title>Sign in</title>
 </head>
 <body  style="background-color: #F4F5F7; text-align: center; height: 100vh; margin: 0 auto; overflow-x: hidden;">
@@ -21,9 +22,9 @@
         <div class="profile">
             <div class="profile-text">
                 <div style="display: flex; margin-left: 4%; font-size: 15px; font-weight: 700;">프로필 사진</div>
-                <div class="helper-text">+ helper text</div>
+                <div id="profile-img-helper-text" class="helper-text" style="display: flex;">*프로필 사진을 추가해주세요.</div>
             </div>
-            <input type="file" class="uploadImg" accept="image/*" required multiple style="display: none;">
+            <input id="profile_img" type="file" class="uploadImg" accept="image/*" required style="display: none;">
             <div style="width: 149px; height: 149px; align-content: center;"  class="upload">
                 <img src="./img/plus.png">
             </div>
@@ -32,22 +33,22 @@
             <form>
                 <div class="form-group">
                     <label>이메일*</label>
-                    <input type="text" name="username" placeholder="이메일을 입력하세요"><br>
+                    <input id="email" type="text" name="username" placeholder="이메일을 입력하세요">
                     <div class="helper-text">+ helper text</div>
                 </div>
                 <div class="form-group">
                     <label>비밀번호*</label>
-                    <input type="password" name="password" placeholder="비밀번호를 입력하세요">
+                    <input id="password" type="password" name="password" placeholder="비밀번호를 입력하세요">
                     <div class="helper-text">+ helper text</div>
                 </div>
                 <div class="form-group">
                     <label>비밀번호 확인*</label>
-                    <input type="password" name="password" placeholder="비밀번호를 한번 더 입력하세요">
+                    <input id="rePassword" type="password" name="password" placeholder="비밀번호를 한번 더 입력하세요">
                     <div class="helper-text">+ helper text</div>
                 </div>
                 <div class="form-group">
                     <label>닉네임*</label>
-                    <input type="text" name="text" placeholder="닉네임을 입력하세요">
+                    <input id="nickname" type="text" name="text" placeholder="닉네임을 입력하세요">
                     <div class="helper-text">+ helper text</div>
                 </div>
             </form>
@@ -62,4 +63,5 @@
 
     upload.addEventListener('click', () => realUpload.click());
 </script>
+<script src="./js/signin.js"></script>
 </html>

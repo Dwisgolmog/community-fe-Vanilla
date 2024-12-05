@@ -14,6 +14,9 @@
     border-radius: 25px;
     border: white;
 }
+.write-btn:hover{
+    background-color: #7f6aee;
+}
 .write{
     width: 100%;
     display: flex;
