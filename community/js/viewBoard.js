@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 const loadBoardInfo = async userInfo => {
     const { data: boardInfo } = await axios.get(boardInfoUrl);
     const {
+        board_id,
         title,
         profile_img,
         nickname,
@@ -42,6 +43,9 @@ const loadBoardInfo = async userInfo => {
     document.querySelector('#likeCount').innerText = like_count;
     document.querySelector('#viewCount').innerText = view_count;
     document.querySelector('#commentCount').innerText = comment_count;
+    document.querySelector('#board-edit-btn').onclick = () => {
+        location.href = `/board/edit/${board_id}`;
+    };
 
     //NOTE:게시글과 로그인한 유저가 다를시 버튼 안보이게 처리함
     const editBoardBtn = document.querySelector('.edit-board-btn');
@@ -53,6 +57,9 @@ const loadBoardInfo = async userInfo => {
 //NOTE:댓글 조회
 const loadComments = async userInfo => {
     const { data: commentInfo } = await axios.get(boardCommentUrl);
+
+    //NOTE:댓글이 없을시 종료
+    if (!commentInfo.data || commentInfo.data.length === 0) return;
 
     const container = document.querySelector('.sub-content');
 
@@ -174,10 +181,7 @@ const deleteComment = async commentId => {
 
 const handleError = e => {
     const status = e.response?.status;
-    if (status == 401) {
-        alert('세션 만료! 다시 로그인해주세요!');
-        window.location.href = '/';
-    } else if (status == 404) {
+    if (status == 404) {
         alert('데이터를 찾을 수 없습니다!');
     } else {
         console.error(e);

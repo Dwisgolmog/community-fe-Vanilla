@@ -2,6 +2,15 @@ const writeBoardUrl = 'http://localhost:5050/api/boards';
 let title, content;
 let content_img = null;
 
+const addBoardBtn = document.querySelector('.add-btn');
+const checkInput = (title, content) => {
+    if (title && content) {
+        addBoardBtn.style.backgroundColor = '#7F6AEE';
+    } else {
+        addBoardBtn.style.backgroundColor = '#aca0eb';
+    }
+};
+
 const inputTitle = document.querySelector('#input-title');
 inputTitle.addEventListener('input', ({ target }) => {
     title = target.value;
@@ -19,7 +28,6 @@ inputContentImg.addEventListener('change', ({ target }) => {
     content_img = target.files[0];
 });
 
-const addBoardBtn = document.querySelector('.edit-btn');
 addBoardBtn.addEventListener('click', async () => {
     try {
         const formData = new FormData();
@@ -46,11 +54,3 @@ addBoardBtn.addEventListener('click', async () => {
         alert(response.message);
     }
 });
-
-const checkInput = (title, content) => {
-    if (title && content) {
-        addBoardBtn.style.backgroundColor = '#7F6AEE';
-    } else {
-        addBoardBtn.style.backgroundColor = '#aca0eb';
-    }
-};

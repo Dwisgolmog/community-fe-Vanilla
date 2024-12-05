@@ -32,7 +32,7 @@ app.get("/board/view/:id", (req, res) => {
 });
 
 // NOTE : 게시글 수정
-app.get("/board/edit", (req, res) => {
+app.get("/board/edit/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "../community/board/editBoard.html"));
 });
 
