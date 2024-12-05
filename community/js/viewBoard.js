@@ -179,6 +179,20 @@ const deleteComment = async commentId => {
     }
 };
 
+//NOTE: 게시글 삭제 요청
+document.querySelector('.modal-btn2').addEventListener('click', async () => {
+    try {
+        const response = await axios.delete(boardInfoUrl);
+
+        if (response.status == 201) {
+            alert('게시물 삭제 완료!');
+            location.href = '/main';
+        }
+    } catch (e) {
+        handleEditComment(e);
+    }
+});
+
 const handleError = e => {
     const status = e.response?.status;
     if (status == 404) {
