@@ -2,14 +2,14 @@ const helperText = document.querySelector('#helper-text');
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        await loadLgoutPage();
+        await loadEditUserPage();
     } catch (e) {
         console.log(e);
     }
 });
 
 //NOTE: 페이지 로드
-const loadLgoutPage = async () => {
+const loadEditUserPage = async () => {
     try {
         const { data: userInfo } = await axios.get(userInfoUrl);
         profileImg.src = userInfo.data.profile_img;
@@ -20,6 +20,22 @@ const loadLgoutPage = async () => {
     }
 };
 
+document.querySelector('#file').addEventListener('change', e => {
+    try {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                document.querySelector('#profileImg').src = reader.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
+
 //NOTE: 회원정보 수정
 document.querySelector('.edit-btn').addEventListener('click', async () => {
     try {
@@ -29,7 +45,7 @@ document.querySelector('.edit-btn').addEventListener('click', async () => {
 
         formData.append('nickname', nickname);
         formData.append('profile_img', profile_img);
-        console.log(profile_img);
+
         const response = await axios.patch(userInfoUrl, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -37,8 +53,12 @@ document.querySelector('.edit-btn').addEventListener('click', async () => {
         });
 
         if (response.status == 201) {
-            alert('수정 완료!');
-            location.reload();
+            const tostMsg = document.querySelector('.complete-edit');
+            tostMsg.classList.add('active');
+            setTimeout(() => {
+                tostMsg.classList.remove('active');
+            }, 1000);
+            helperText.style.display = 'none';
         }
     } catch (e) {
         errorMessage = e.response.data.message;
