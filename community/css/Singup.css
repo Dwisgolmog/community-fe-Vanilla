@@ -20,11 +20,15 @@
 }
 .upload{
     background-color: gray;
+    width: 149px;
+    height: 149px;
+    align-content: center;
     border-radius: 50%;
 }
 .upload img{
     width: 50%;
     height: 50%;
+    border-radius: 50%;
 }
 button{
     transition: transform 0.1s, background-color 0.1s;

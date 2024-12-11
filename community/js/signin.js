@@ -10,6 +10,7 @@ const passwordHelperText = inputPassword.nextElementSibling;
 const rePasswordHelperText = inputRePassword.nextElementSibling;
 const nicknameHelperText = inputNickname.nextElementSibling;
 const profileImgHelperText = document.querySelector('#profile-img-helper-text');
+const showProfileImg = document.querySelector('#input-profile-img');
 let checkEmail = false;
 let checkPassword = false;
 let checkRePassword = false;
@@ -36,12 +37,23 @@ const checkInput = () => {
 };
 
 inputProfileImg.addEventListener('change', e => {
-    if (e.target.value == null) {
+    const file = e.target.files[0];
+
+    if (!file) {
         profileImgHelperText.style.display = 'flex';
     } else {
         profileImgHelperText.style.display = 'none';
-        profileImg = e.target.files[0];
         checkProfileImg = true;
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            showProfileImg.src = reader.result;
+            showProfileImg.style.display = 'flex';
+            showProfileImg.style.width = '100%';
+            showProfileImg.style.height = '100%';
+        };
+
+        reader.readAsDataURL(file);
     }
 
     checkInput();
