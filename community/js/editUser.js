@@ -55,9 +55,15 @@ document.querySelector('.edit-btn').addEventListener('click', async () => {
         if (response.status == 201) {
             const tostMsg = document.querySelector('.complete-edit');
             tostMsg.classList.add('active');
+
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth',
+            });
+
             setTimeout(() => {
                 tostMsg.classList.remove('active');
-            }, 1000);
+            }, 2000);
             helperText.style.display = 'none';
         }
     } catch (e) {
