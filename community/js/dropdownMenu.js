@@ -15,7 +15,7 @@ dropdownMenu.addEventListener('mouseleave', () => {
 });
 
 //NOTE:로그아웃
-const logoutUrl = 'http://localhost:5050/api/users/logout';
+const logoutUrl = `http://${BACKEND_URL}:5050/api/users/logout`;
 document.querySelector('#logout-btn').addEventListener('click', async () => {
     try {
         const response = await axios.post(logoutUrl);

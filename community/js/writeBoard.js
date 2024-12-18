@@ -1,4 +1,4 @@
-const writeBoardUrl = 'http://localhost:5050/api/boards';
+const writeBoardUrl = `http://${BACKEND_URL}:5050/api/boards`;
 let title, content;
 let content_img = null;
 

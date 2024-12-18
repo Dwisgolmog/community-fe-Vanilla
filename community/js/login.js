@@ -1,4 +1,4 @@
-const url = 'http://localhost:5050/api/users/login';
+const url = `http://${BACKEND_URL}:5050/api/users/login`;
 
 let checkEmail = false;
 let checkPassword = false;
