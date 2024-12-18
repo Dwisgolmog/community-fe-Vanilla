@@ -1,4 +1,4 @@
-const boardInfoUrl = 'http://localhost:5050/api/boards?page=1&limit=10';
+const boardInfoUrl = `http://${BACKEND_URL}:5050/api/boards?page=1&limit=10`;
 axios.defaults.withCredentials = true;
 
 const formatCount = count => {
