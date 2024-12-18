@@ -1,4 +1,4 @@
-const editPwdUrl = 'http://localhost:5050/api/users/password';
+const editPwdUrl = `http://${BACKEND_URL}:5050/api/users/password`;
 const inputPassword = document.querySelector('#password');
 const inputRePassword = document.querySelector('#rePassword');
 const passwordHelperText = inputPassword.nextElementSibling;

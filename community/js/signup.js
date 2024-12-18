@@ -1,4 +1,4 @@
-const url = 'http://localhost:5050/api/users/signup';
+const url = `http://${BACKEND_URL}:5050/api/users/signup`;
 
 const inputProfileImg = document.querySelector('#profile_img');
 const inputEmail = document.querySelector('#email');

@@ -1,4 +1,4 @@
-const userInfoUrl = 'http://localhost:5050/api/users';
+const userInfoUrl = `http://${BACKEND_URL}:5050/api/users`;
 axios.defaults.withCredentials = true;
 
 document.addEventListener('DOMContentLoaded', async () => {
