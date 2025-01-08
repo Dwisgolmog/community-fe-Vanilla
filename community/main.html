@@ -7,34 +7,78 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/config.js"></script>
     <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/Login.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/default.css">
     <title>Main</title>
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+        .page-btn {
+            background-color: #fef6e4; 
+            color: #555555; 
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 32px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .page-btn.active {
+            background-color: #f5c98a; 
+            color: #ffffff; 
+            font-weight: bold;
+        }
+        .page-btn:hover {
+            background-color: #f7d9aa; 
+            color: #ffffff;
+        }
+        .page-btn:disabled {
+            background-color: #f0f0f0;
+            color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
     <div class="header" >
-        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">아무 말 대잔치</a> 
+        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">£ 야옹이 광장 ¢</a> 
         <div class="dropdown">
             <img src="./img/profile.jpeg" class="profile-icon" alt="Icon">
             <div class="dropdown-menu">
-                <div class="dropdown-element"><a href="/users/info-edit">회원정보수정</a></div>
-                <div class="dropdown-element"><a href="/users/pwd-edit">비밀번호수정</a></div>
-                <div id="logout-btn" class="dropdown-element"><a>로그아웃</a></div>
+                <div class="dropdown-element" onclick="location.href='/users/info-edit';">회원정보수정</div>
+                <div class="dropdown-element" onclick="location.href='/users/pwd-edit';">비밀번호수정</div>
+                <div id="logout-btn" class="dropdown-element">로그아웃</div>
             </div>
         </div>
     </div>
-    <hr style="margin: 0 auto; width: 100%;">
 
+    <div class="delayImg">
+        <img src="../../img/catSpace.gif">
+        <h2>로딩중...</h2>
+    </div>
     <div class="main-content">
         <h2 style="font-size: 24px; font-weight: 400; text-align: center;">
             안녕하세요,<br>
-            아무 말 대잔치 <strong>게시판</strong> 입니다.
+            야옹이 광장 <strong style="text-decoration: underline;">게시판</strong> 입니다. †
         </h2>
         <div class="write">
             <button class="write-btn" onclick="location.href='/board/write'">게시글 작성</button>
         </div>
-        
+        <div class="content">
+
+        </div>
     </div>
+    
+    <!-- 페이지 이동 버튼 -->
+    <div class="pagination"></div>
+    
+
 </body>
     <!-- NOTE:헤더 프로필 이미지 드롭다운 메뉴 -->
     <script src="./js//dropdownMenu.js"></script>

@@ -9,25 +9,24 @@
     <script src="../../js/config.js"></script>
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/editBoard.css">
+    <link rel="stylesheet" href="../../css/default.css">
     <title>Main</title>
 </head>
 
 <body>
     <div class="header">
-        <!-- 뒤로가기 만들기--> 
-        <div style="width: 0;"><a id="back-page" style="position: relative; right: 133px;" href="/board/view"><img style="height: 19px;"
-            src="../../img/back.png" alt="Icon"></a></div>
-        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">아무 말 대잔치</a>
-        <div class="dropdown">
-            <img src="../../img/profile.jpeg" class="profile-icon" alt="Icon">
+        <div style="width: 0;">
+            <a id="back-page" href="/main"> < </a>
+        </div>
+        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">£ 야옹이 광장 ¢</a><div class="dropdown">
+            <img src="./img/profile.jpeg" class="profile-icon" alt="Icon">
             <div class="dropdown-menu">
-                <div class="dropdown-element"><a href="/users/info-edit">회원정보수정</a></div>
-                <div class="dropdown-element"><a href="/users/pwd-edit">비밀번호수정</a></div>
-                <div id="logout-btn" class="dropdown-element"><a>로그아웃</a></div>
+                <div class="dropdown-element" onclick="location.href='/users/info-edit';">회원정보수정</div>
+                <div class="dropdown-element" onclick="location.href='/users/pwd-edit';">비밀번호수정</div>
+                <div id="logout-btn" class="dropdown-element">로그아웃</div>
             </div>
         </div>
     </div>
-    <hr style="margin: 0 auto; width: 100%;">
 
     <h1 style="font-size: 24px; font-weight: 700; margin-top: 24px;">게시글 수정</h1>
 

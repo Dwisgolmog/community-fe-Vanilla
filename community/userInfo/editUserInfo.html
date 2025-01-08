@@ -9,28 +9,27 @@
     <script src="../js/config.js"></script>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/editUserInfo.css">
+    <link rel="stylesheet" href="../css/default.css">
     <title>Main</title>
 </head>
 
 <body>
-    <div class="header">
-        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">아무 말 대잔치</a> 
-
+    <div class="header" >
+        <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">£ 야옹이 광장 ¢</a> 
         <div class="dropdown">
-            <img src="../img/profile.jpeg" class="profile-icon" alt="Icon">
+            <img src="./img/profile.jpeg" class="profile-icon" alt="Icon">
             <div class="dropdown-menu">
-                <div class="dropdown-element"><a href="/users/info-edit">회원정보수정</a></div>
-                <div class="dropdown-element"><a href="/users/pwd-edit">비밀번호수정</a></div>
-                <div id="logout-btn" class="dropdown-element"><a>로그아웃</a></div>
+                <div class="dropdown-element" onclick="location.href='/users/info-edit';">회원정보수정</div>
+                <div class="dropdown-element" onclick="location.href='/users/pwd-edit';">비밀번호수정</div>
+                <div id="logout-btn" class="dropdown-element">로그아웃</div>
             </div>
         </div>
     </div>
-    <hr style="margin: 0 auto; width: 100%;">
 
     <div class="body-frame">
-        <h1 style="font-size: 32px; font-weight: 700; margin-top: 161px; margin-bottom: 12px;">회원정보 수정</h1>
+        <h1 style="font-size: 32px; font-weight: 700; margin-top: 80px; margin-bottom: 12px;">회원정보 수정</h1>
         <div class="profile-Img">
-            <p style="margin-top: 0;margin-bottom: 22px; font-size: 15px; font-weight: 700;">프로필 사진*</p>
+            <p style="margin-top: 0;margin-bottom: 22px; font-size: 22px; font-weight: 700;">프로필 사진</p>
         </div>
 
         <div class="imgBox">
@@ -40,9 +39,9 @@
         </div>
 
         <div class="editBox">
-            <p style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">이메일</p>
-            <p id="user-email" style="font-size: 14px; font-weight: 400; margin-bottom: 16px;">20191105@vision.hoseo.edu</p>
-            <p style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">닉네임</p>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">이메일</p>
+            <p id="user-email" style="font-size: 18px; font-weight: 400; margin-bottom: 16px; color: #555555">20191105@vision.hoseo.edu</p>
+            <p style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">닉네임</p>
             <input id="nickname" maxlength="10" type="text">
             <p id="helper-text" style="font-size: 14px; font-weight: 400; color: red; display: none;">*helper text</p>
         </div>

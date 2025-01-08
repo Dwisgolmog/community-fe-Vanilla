@@ -11,10 +11,10 @@ let password;
 const editBtn = document.querySelector('.edit-btn');
 const checkInput = () => {
     if (checkPassword && checkRePassword) {
-        editBtn.style.backgroundColor = '#7F6AEE';
+        editBtn.style.backgroundColor = '#D16160';
         return true;
     } else {
-        editBtn.style.backgroundColor = '#aca0eb';
+        editBtn.style.backgroundColor = '#E37978';
         return false;
     }
 };

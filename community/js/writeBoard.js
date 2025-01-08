@@ -5,9 +5,9 @@ let content_img = null;
 const addBoardBtn = document.querySelector('.add-btn');
 const checkInput = (title, content) => {
     if (title && content) {
-        addBoardBtn.style.backgroundColor = '#7F6AEE';
+        addBoardBtn.style.backgroundColor = '#DA7F76';
     } else {
-        addBoardBtn.style.backgroundColor = '#aca0eb';
+        addBoardBtn.style.backgroundColor = '#F5C3C2';
     }
 };
 

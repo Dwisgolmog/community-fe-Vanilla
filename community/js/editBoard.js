@@ -14,10 +14,10 @@ let changeImg = false;
 const editBtn = document.querySelector('.edit-btn');
 const checkChange = () => {
     if (changeTitle || changeContent || changeImg) {
-        editBtn.style.backgroundColor = '#7F6AEE';
+        editBtn.style.backgroundColor = '#DA7F76';
         return true;
     } else {
-        editBtn.style.backgroundColor = '#aca0eb';
+        editBtn.style.backgroundColor = '#F5C3C2';
         return false;
     }
 };
