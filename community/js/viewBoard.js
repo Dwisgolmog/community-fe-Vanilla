@@ -162,14 +162,12 @@ document.querySelector('#add-comment').addEventListener('click', async () => {
                 { comment },
             );
             if (rseponse.status == 201) {
-                alert('댓글 수정 완료!');
                 location.reload();
             }
         } else {
             //NOTE: 댓글 작성
             const response = await axios.post(boardCommentUrl, { comment });
             if (response.status == 201) {
-                alert('댓글 작성 완료!');
                 location.reload();
             }
         }
@@ -183,7 +181,6 @@ const deleteComment = async commentId => {
     try {
         const response = await axios.delete(`${boardCommentUrl}/${commentId}`);
         if (response.status == 201) {
-            alert('댓글 삭제 완료!');
             location.reload();
         }
     } catch (e) {
@@ -197,7 +194,6 @@ document.querySelector('.modal-btn2').addEventListener('click', async () => {
         const response = await axios.delete(boardInfoUrl);
 
         if (response.status == 201) {
-            alert('게시물 삭제 완료!');
             location.href = '/main';
         }
     } catch (e) {

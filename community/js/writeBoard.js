@@ -43,7 +43,6 @@ addBoardBtn.addEventListener('click', async () => {
             });
 
             if (response.status == 201) {
-                alert(response.data.message);
                 location.href = '/main';
             }
         } else {

@@ -80,7 +80,6 @@ loginBtn.addEventListener('click', async () => {
             );
 
             if (response.status === 200) {
-                alert('로그인 성공!');
                 window.location.href = '/main';
             }
         } else {

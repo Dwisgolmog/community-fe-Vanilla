@@ -80,3 +80,35 @@ button:active{
     background-color: #555;
     transform: scale(0.95);
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+.page-btn {
+    background-color: #fef6e4; 
+    color: #555555; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 32px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.page-btn.active {
+    background-color: #f5c98a; 
+    color: #ffffff; 
+    font-weight: bold;
+}
+.page-btn:hover {
+    background-color: #f7d9aa; 
+    color: #ffffff;
+}
+.page-btn:disabled {
+    background-color: #f0f0f0;
+    color: #cccccc;
+    cursor: not-allowed;
+}

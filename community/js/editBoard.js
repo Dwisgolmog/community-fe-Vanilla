@@ -67,7 +67,6 @@ editBtn.addEventListener('click', async () => {
             });
 
             if (response.status == 201) {
-                alert('게시물 수정 완료!');
                 location.href = `/board/view/${boardNumber}`;
             }
         } else {
