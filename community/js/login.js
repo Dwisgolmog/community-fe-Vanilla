@@ -9,9 +9,9 @@ const checkInput = () => {
     const loginBtn = document.querySelector('.login-button');
 
     if (checkEmail && checkPassword) {
-        loginBtn.style.backgroundColor = '#7F6AEE';
+        loginBtn.style.backgroundColor = '#DA7F76';
     } else {
-        loginBtn.style.backgroundColor = '#aca0eb';
+        loginBtn.style.backgroundColor = '#F5C3C2';
     }
 };
 
@@ -80,7 +80,6 @@ loginBtn.addEventListener('click', async () => {
             );
 
             if (response.status === 200) {
-                alert('로그인 성공!');
                 window.location.href = '/main';
             }
         } else {

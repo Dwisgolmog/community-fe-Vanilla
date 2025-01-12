@@ -31,9 +31,9 @@ const checkInput = () => {
         checkNickname &&
         checkProfileImg
     ) {
-        signupBtn.style.backgroundColor = '#7F6AEE';
+        signupBtn.style.backgroundColor = '#DA7F76';
     } else {
-        signupBtn.style.backgroundColor = '#aca0eb';
+        signupBtn.style.backgroundColor = '#F5C3C2';
     }
 };
 

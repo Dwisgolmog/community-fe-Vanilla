@@ -42,6 +42,8 @@ const loadBoardInfo = async userInfo => {
     if (content_img) {
         document.querySelector('#contentImg').src = content_img;
         document.querySelector('#contentImg').style.display = 'block';
+    } else {
+        document.querySelector('.box').style.display = 'none';
     }
     document.querySelector('#content').innerText = content;
     document.querySelector('#likeCount').innerText = like_count;
@@ -56,6 +58,9 @@ const loadBoardInfo = async userInfo => {
     if (user_id != userInfo.data.user_id) {
         editBoardBtn.style.display = 'none';
     }
+
+    document.querySelector('.delayImg').style.display = 'none';
+    document.querySelector('.main-content').style.display = 'block';
 };
 
 //NOTE:댓글 조회
@@ -85,16 +90,19 @@ const loadComments = async userInfo => {
             commentElement.innerHTML = `
             <div class="comment-info">
                 <div class="comment-title">
-                    <img style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;" src="${profile_img}">
-                    <span style="margin-right: 24px;">${nickname}</span>
-                    <span>${comment_date}</span>
+                    <div style="display:flex; align-items: center;">
+                        <img style="width: 36px; height: 36px; border-radius: 50%; margin-right: 10px;" src="${profile_img}">
+                        <span style="margin-right: 24px;">${nickname}</span>
+                        <span>${comment_date}</span>
+                    </div>
+                    <div class="comment-btn" ${!isUserComment ? 'style="display:none;"' : 'style="display:flex;"'}>
+                        <button class="edit-comment" data-id="${comment_id}">수정</button>
+                        <button class="remove-comment" data-id="${comment_id}" style="margin-left: 8px;">삭제</button>
+                    </div>
                 </div>
                 <div class="comment-content" style="white-space: pre-wrap;">${comment}</div>
             </div>
-            <div class="comment-btn" ${!isUserComment ? 'style="display:none;"' : 'style="display:flex;"'}>
-                <button class="edit-comment" data-id="${comment_id}">수정</button>
-                <button class="remove-comment" data-id="${comment_id}" style="margin-left: 8px;">삭제</button>
-            </div>
+
         `;
             container.appendChild(commentElement);
         },
@@ -154,14 +162,12 @@ document.querySelector('#add-comment').addEventListener('click', async () => {
                 { comment },
             );
             if (rseponse.status == 201) {
-                alert('댓글 수정 완료!');
                 location.reload();
             }
         } else {
             //NOTE: 댓글 작성
             const response = await axios.post(boardCommentUrl, { comment });
             if (response.status == 201) {
-                alert('댓글 작성 완료!');
                 location.reload();
             }
         }
@@ -175,7 +181,6 @@ const deleteComment = async commentId => {
     try {
         const response = await axios.delete(`${boardCommentUrl}/${commentId}`);
         if (response.status == 201) {
-            alert('댓글 삭제 완료!');
             location.reload();
         }
     } catch (e) {
@@ -189,7 +194,6 @@ document.querySelector('.modal-btn2').addEventListener('click', async () => {
         const response = await axios.delete(boardInfoUrl);
 
         if (response.status == 201) {
-            alert('게시물 삭제 완료!');
             location.href = '/main';
         }
     } catch (e) {

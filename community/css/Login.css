@@ -1,3 +1,9 @@
+body{
+    text-align: center; 
+    height: 100vh; 
+    margin: 0 auto; 
+    overflow-x: hidden;
+}
 .login-container {
     width: 392px;
     height: 221px;
@@ -40,16 +46,20 @@ form {
 }
 
 .login-button {
+    font-family: 'Ownglyph_ParkDaHyun';
     width: 383px;
     height: 37px;
-    background-color: #aca0eb;
+    background-color: #F5C3C2;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 16px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 10px;
+}
+.login-button:hover{
+    background-color: #DA7F76;
 }
 button {
     transition:
@@ -57,6 +67,5 @@ button {
         background-color 0.1s;
 }
 button:active {
-    background-color: #555;
     transform: scale(0.95);
 }

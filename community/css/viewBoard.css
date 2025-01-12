@@ -4,39 +4,63 @@
     height: 100%;
     align-content: center;
     justify-items: center;
+    display: none;
+}
+.delayImg{
+    position: absolute;
+    top: calc(50% - 200px);
+    text-align: center;
+}
+.delayImg img{
+    display: block;
+    align-content: center;
+    justify-items: center;
+    border-radius: 25%;
+    width: 200px;
+    height: 200px;
 }
 .header-content{
     width: 544px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 24px;
+    margin-top: 24px;
 }
 .board-info-container{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.board-info{
+.board-info-container img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.container-info{
     display: flex;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 400;
+    flex-direction: column;
 }
 .main-content h2{
     font-size: 24px;
     font-weight: 700;
 }
 .edit-board-btn button{
-    width: 50px;
+    width: 60px;
     height: 27px;
-    border: 1px solid #ACA0EB;
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: 400;
+    background-color: #A8D5BA;
+    color: #4F4F4F;
+    border: 1px solid white;
+    font-size: 16px;
+    border-radius: 25px;
+    font-family: 'Ownglyph_ParkDaHyun';
+}
+.edit-board-btn button:hover{
+    background-color: #86B39A;
+    color: #FFFFFF;
 }
 .textBox{
     width: 544px;
-    height: 231px;
+    max-height: 231px;
     overflow-y: auto;
     margin-bottom: 32px;
 }
@@ -48,7 +72,9 @@
     height: 77px;
     font-size: 20px;
     font-weight: 700;
-    background-color: #D9D9D9;
+    background-color: #A8D5BA;
+    color: white;
+    border: 1px solid #86B39A;
     border-radius: 5px;
     margin-right: 8px;
     display: flex;
@@ -59,7 +85,7 @@
 .comment-box{
     box-sizing: border-box;
     background-color: white;
-    width: 592px;
+    width: 544px;
     height: 169px;
     border-radius: 5px;
     display: flex;
@@ -70,22 +96,28 @@
 .comment-box button{
     width: 138px;
     height: 39px;
-    background-color: #ACA0EB;
-    color: white;
+    background-color: #FAD4D4;
+    color: #5F5F5F;
+    border: 1px solid #E5B3B3;
     border-radius: 5px;
     border: 0;
     margin-right: 4px;
+    font-family: 'Ownglyph_ParkDaHyun';
+    font-size: 18px;
 }
 .comment{
     width: 544px;
-    height: 65px;
     display: flex;
     margin-bottom: 5%;
     justify-content: space-between;
 }
+.comment-info{
+    width: 100%;
+}
 .comment-title{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .comment-content{
     margin-left: 46px;
@@ -98,8 +130,16 @@
 .comment-btn button{
     width: 50px;
     height: 27px;
-    border: 1px solid #ACA0EB;
+    background-color: #A8D5BA;
+    color: #4F4F4F;
+    border: 1px solid white;
     border-radius: 5px;
+    font-family: 'Ownglyph_ParkDaHyun';
+    font-size: 14px;
+}
+.comment-btn button:hover{
+    background-color: #86B39A;
+    color: #FFFFFF;
 }
 .board-modal-container {
     position: fixed;
@@ -125,7 +165,7 @@
 }
 .modal{
     box-sizing: border-box;
-    background-color: white;
+    background-color: #FFF7E6;
     width: 408px;
     height: 242px;
     display: flex;
@@ -137,28 +177,36 @@
 .modal-btn1, .modal-btn3{
     width: 127px;
     height: 44px;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
+    background-color: #D9D9D9;
+    color: #333333;
+    border-radius: 8px;
     font-size: 20px;
     font-weight: 400;
     border: 0;
 }
+.modal-btn1:hover, .modal-btn3:hover{
+    background-color: #A6A6A6;
+    color: #333333;
+}
 .modal-btn2, .modal-btn4{
     width: 127px;
     height: 44px;
-    background-color: #C4A5FA;
-    color: black;
-    border-radius: 5px;
+    background-color: #FFA07A;
+    color: #FFFFFF;
+    border-radius: 8px;
     font-size: 20px;
     font-weight: 400;
     border: 0;
+}
+.modal-btn2:hover, .modal-btn4:hover{
+    background-color: #FF7043;
 }
 button{
     transition: transform 0.1s, background-color 0.1s;
 }
 button:active{
-    background-color: #555;
+    background-color: #E5B3B3;
+    color: #FFFFFF;
     transform: scale(0.95);
 }
 .content-img{

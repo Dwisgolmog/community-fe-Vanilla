@@ -86,7 +86,6 @@ document.querySelector('.modal-btn2').addEventListener('click', async () => {
         const response = await axios.delete(userInfoUrl);
 
         if (response.status == 201) {
-            alert('회원 삭제 완료!');
             location.href = '/';
         }
     } catch (e) {
