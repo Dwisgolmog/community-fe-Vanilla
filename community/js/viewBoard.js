@@ -73,21 +73,24 @@ const loadComments = async userInfo => {
     const container = document.querySelector('.sub-content');
 
     container.innerHTML = '';
-    commentInfo.data.forEach(
-        ({
+    commentInfo.data.forEach(cmt => {
+        if (!cmt) return;
+
+        const {
             comment_id,
             profile_img,
             nickname,
             comment_date,
             comment,
             user_id,
-        }) => {
-            const isUserComment = user_id == userInfo.data.user_id;
+        } = cmt;
 
-            const commentElement = document.createElement('div');
-            commentElement.className = 'comment';
-            commentElement.id = `comment-${comment_id}`;
-            commentElement.innerHTML = `
+        const isUserComment = user_id == userInfo.data.user_id;
+
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment';
+        commentElement.id = `comment-${comment_id}`;
+        commentElement.innerHTML = `
             <div class="comment-info">
                 <div class="comment-title">
                     <div style="display:flex; align-items: center;">
@@ -104,9 +107,8 @@ const loadComments = async userInfo => {
             </div>
 
         `;
-            container.appendChild(commentElement);
-        },
-    );
+        container.appendChild(commentElement);
+    });
 
     //NOTE: 댓글 수정 & 삭제 이벤트
     container.addEventListener('click', ({ target }) => {
