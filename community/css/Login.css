@@ -4,17 +4,21 @@ body{
     margin: 0 auto; 
     overflow-x: hidden;
 }
+
+
 .login-container {
-    width: 392px;
-    height: 221px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 form {
     display: flex;
     flex-direction: column;
     width: 100%;
+    display: -webkit-flex; /* 사파리 대응 */
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
 }
 .form-group {
     align-content: space-between;

@@ -7,6 +7,7 @@ const rePasswordHelperText = inputRePassword.nextElementSibling;
 let checkPassword = false;
 let checkRePassword = false;
 let password;
+let rePassword;
 
 const editBtn = document.querySelector('.edit-btn');
 const checkInput = () => {
@@ -20,9 +21,10 @@ const checkInput = () => {
 };
 
 const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#$])[A-Za-z\d@$!%*?&#$]{8,20}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^*])[A-Za-z\d@$!%*?&#^*]{8,20}$/;
 
 inputPassword.addEventListener('change', e => {
+    password = e.target.value;
     if (e.target.value == '') {
         passwordHelperText.style.display = 'flex';
         inputPassword.style.marginBottom = '0px';
@@ -31,8 +33,8 @@ inputPassword.addEventListener('change', e => {
     } else if (passwordRegex.test(e.target.value)) {
         passwordHelperText.style.display = 'none';
         inputPassword.style.marginBottom = '25px';
+        rePasswordHelperText.style.display = 'none';
         checkPassword = true;
-        password = e.target.value;
     } else {
         passwordHelperText.style.display = 'flex';
         inputPassword.style.marginBottom = '0px';
@@ -41,10 +43,18 @@ inputPassword.addEventListener('change', e => {
         checkPassword = false;
     }
 
+    if (password != rePassword) {
+        rePasswordHelperText.style.display = 'flex';
+        inputRePassword.style.marginBottom = '0px';
+        rePasswordHelperText.textContent = '*비밀번호가 다릅니다.';
+        checkRePassword = false;
+    }
+
     checkInput();
 });
 
 inputRePassword.addEventListener('change', e => {
+    rePassword = e.target.value;
     if (e.target.value == '') {
         rePasswordHelperText.style.display = 'flex';
         inputRePassword.style.marginBottom = '0px';
@@ -59,6 +69,13 @@ inputRePassword.addEventListener('change', e => {
         rePasswordHelperText.style.display = 'none';
         inputRePassword.style.marginBottom = '40px';
         checkRePassword = true;
+    }
+
+    if (password != rePassword) {
+        rePasswordHelperText.style.display = 'flex';
+        inputRePassword.style.marginBottom = '0px';
+        rePasswordHelperText.textContent = '*비밀번호가 다릅니다.';
+        checkRePassword = false;
     }
 
     checkInput();

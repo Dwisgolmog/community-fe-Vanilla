@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#$])[A-Za-z\d@$!%*?&#$]{8,20}$/;
-
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^*])[A-Za-z\d@$!%*?&#^*]{8,20}$/;
     inputEmail.addEventListener('input', e => {
         if (emailRegex.test(e.target.value)) {
             emailHelperText.style.display = 'none';

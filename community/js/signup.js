@@ -81,7 +81,7 @@ inputProfileImg.addEventListener('change', e => {
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#$])[A-Za-z\d@$!%*?&#$]{8,20}$/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^*])[A-Za-z\d@$!%*?&#^*]{8,20}$/;
 
 inputEmail.addEventListener('change', e => {
     if (e.target.value == '') {
@@ -115,6 +115,7 @@ inputPassword.addEventListener('change', e => {
     } else if (passwordRegex.test(password)) {
         passwordHelperText.style.display = 'none';
         inputPassword.style.marginBottom = '16px';
+        rePasswordHelperText.style.display = 'none';
         checkPassword = true;
     } else {
         passwordHelperText.style.display = 'flex';
@@ -141,15 +142,17 @@ inputRePassword.addEventListener('change', e => {
         inputRePassword.style.marginBottom = '0px';
         rePasswordHelperText.textContent = '*비밀번호를 한번더 입력해주세요.';
         checkRePassword = false;
-    } else if (password != rePassword) {
-        rePasswordHelperText.style.display = 'flex';
-        inputRePassword.style.marginBottom = '0px';
-        rePasswordHelperText.textContent = '*비밀번호가 다릅니다.';
-        checkRePassword = false;
     } else {
         rePasswordHelperText.style.display = 'none';
         inputRePassword.style.marginBottom = '16px';
         checkRePassword = true;
+    }
+
+    if (password != rePassword) {
+        rePasswordHelperText.style.display = 'flex';
+        inputRePassword.style.marginBottom = '0px';
+        rePasswordHelperText.textContent = '*비밀번호가 다릅니다.';
+        checkRePassword = false;
     }
 
     checkInput();
