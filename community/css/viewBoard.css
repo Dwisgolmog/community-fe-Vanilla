@@ -63,6 +63,7 @@
     max-height: 231px;
     overflow-y: auto;
     margin-bottom: 32px;
+    word-wrap: break-word;
 }
 .board-stats{
     display: flex;
@@ -110,6 +111,7 @@
     display: flex;
     margin-bottom: 5%;
     justify-content: space-between;
+    word-wrap: break-word;
 }
 .comment-info{
     width: 100%;
