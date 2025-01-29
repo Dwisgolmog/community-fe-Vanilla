@@ -10,12 +10,15 @@ let password;
 let rePassword;
 
 const editBtn = document.querySelector('.edit-btn');
+editBtn.disabled = true;
 const checkInput = () => {
     if (checkPassword && checkRePassword) {
         editBtn.style.backgroundColor = '#D16160';
+        editBtn.disabled = false;
         return true;
     } else {
-        editBtn.style.backgroundColor = '#E37978';
+        editBtn.style.backgroundColor = '#F5C3C2';
+        editBtn.disabled = true;
         return false;
     }
 };
@@ -49,7 +52,6 @@ inputPassword.addEventListener('change', e => {
         rePasswordHelperText.textContent = '*비밀번호가 다릅니다.';
         checkRePassword = false;
     }
-
     checkInput();
 });
 
@@ -84,7 +86,7 @@ inputRePassword.addEventListener('change', e => {
 //NOTE: 회원 탈퇴
 editBtn.addEventListener('click', async () => {
     try {
-        if (checkInput) {
+        if (checkInput()) {
             const response = await axios.patch(editPwdUrl, {
                 password: password,
             });

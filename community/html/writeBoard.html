@@ -20,11 +20,13 @@
         </div>
         <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">£ 야옹이 광장 ¢</a>
         <div class="dropdown">
-            <img src="../img/profile.jpeg" class="profile-icon" alt="Icon">
+            <div class="profile">
+                <img src="../img/profile.jpeg" class="profile-icon" alt="Icon">
+            </div>
             <div class="dropdown-menu">
-                <div class="dropdown-element"><a href="/users/info-edit">회원정보수정</a></div>
-                <div class="dropdown-element"><a href="/users/pwd-edit">비밀번호수정</a></div>
-                <div id="logout-btn" class="dropdown-element"><a>로그아웃</a></div>
+                <div class="dropdown-element" onclick="location.href='/users/info-edit';">회원정보수정</div>
+                <div class="dropdown-element" onclick="location.href='/users/pwd-edit';">비밀번호수정</div>
+                <div id="logout-btn" class="dropdown-element">로그아웃</div>
             </div>
         </div>
     </div>

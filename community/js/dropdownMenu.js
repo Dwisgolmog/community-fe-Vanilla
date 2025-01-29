@@ -1,4 +1,4 @@
-const profileIcon = document.querySelector('.profile-icon');
+const profileIcon = document.querySelector('.profile');
 const dropdownMenu = document.querySelector('.dropdown-menu');
 const dropdownElement = document.querySelector('.dropdown-element');
 profileIcon.addEventListener('mouseenter', () => {

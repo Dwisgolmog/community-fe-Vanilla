@@ -20,7 +20,9 @@
         </div>
         <a href="/main" style="font-size: 32px; font-weight: 400; text-decoration: none; color: black;">£ 야옹이 광장 ¢</a>
         <div class="dropdown">
-            <img src="" class="profile-icon" alt="Icon">
+            <div class="profile">
+                <img src="" class="profile-icon" alt="Icon">
+            </div>
             <div class="dropdown-menu">
                 <div class="dropdown-element" onclick="location.href='/users/info-edit';">회원정보수정</div>
                 <div class="dropdown-element" onclick="location.href='/users/pwd-edit';">비밀번호수정</div>
@@ -78,7 +80,7 @@
         <hr style="width: 592px;">
 
         <div class="comment-box">
-            <textarea id="input-comment" placeholder="댓글을 남겨주세요!(최대 500글자)"
+            <textarea id="input-comment" maxlength="500" placeholder="댓글을 남겨주세요!(최대 500글자)"
                 style="width: 90%; height: 94px; margin: 15px 15px 0px 15px; border: none; resize: none;"></textarea>
             <hr style="width: 544px; margin: 0; color: #00000029; opacity: 0.16;">
             <div style="width: 100%; height: 54px; display: flex; justify-content: flex-end; align-items: center;">
