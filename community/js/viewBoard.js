@@ -174,6 +174,7 @@ document.querySelector('#add-comment').addEventListener('click', async () => {
             }
         }
     } catch (e) {
+        alert(e.response.data.message);
         handleError(e);
     }
 });
