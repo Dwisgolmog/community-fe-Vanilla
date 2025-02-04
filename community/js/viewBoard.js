@@ -1,6 +1,6 @@
 const url = window.location.href;
 const boardNumber = url.substring(url.lastIndexOf('/') + 1);
-const boardInfoUrl = `http://${BACKEND_URL}:5${BACKEND_PORT}050/api/boards/${boardNumber}`;
+const boardInfoUrl = `http://${BACKEND_URL}:${BACKEND_PORT}/api/boards/${boardNumber}`;
 const boardCommentUrl = `http://${BACKEND_URL}:${BACKEND_PORT}/api/boards/${boardNumber}/comments`;
 const boardLikeUrl = `http://${BACKEND_URL}:${BACKEND_PORT}/api/boards/like/${boardNumber}`;
 const boardunLikeUrl = `http://${BACKEND_URL}:${BACKEND_PORT}/api/boards/unlike/${boardNumber}`;
