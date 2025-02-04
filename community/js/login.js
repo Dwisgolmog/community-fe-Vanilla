@@ -1,4 +1,4 @@
-const url = `http://${BACKEND_URL}:5050/api/users/login`;
+const url = `http://${BACKEND_URL}:${BACKEND_PORT}/api/users/login`;
 
 let checkEmail = false;
 let checkPassword = false;
