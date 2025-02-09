@@ -1,7 +1,6 @@
 const url = window.location.href;
 const boardNumber = url.substring(url.lastIndexOf('/') + 1);
 const boardInfoUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards/${boardNumber}`;
-
 const inputTitle = document.querySelector('#input-title');
 const inputContent = document.querySelector('#textArea');
 const inputImg = document.querySelector('#content-img');
