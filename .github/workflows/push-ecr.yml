@@ -1,0 +1,42 @@
+name: Deploy to Amazon ECR
+
+on:
+  workflow_dispatch: # 수동으로 action을 실행 가능하게 해줌
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+env:
+  AWS_REGION: ap-northeast-2  # aws 리전(서울)
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout # 코드를 가져옴(버전은 혹시 모르니 2버전 사용)
+        uses: actions/checkout@v2 
+
+      - name: Configure AWS credentials	# aws 자격증명 설정
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR     #ECR 로그인
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR # ECR에 푸시하기위해 빌드하고 푸시하기위한 스탭
+        id: build-image      
+        env:
+          ECR_REPOSITORY: ${{ secrets.ECR_REPO_NAME }}
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
