@@ -29,7 +29,7 @@ jobs:
 
       - name: Login to Amazon ECR     #ECR 로그인
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build, tag, and push image to Amazon ECR # ECR에 푸시하기위해 빌드하고 푸시하기위한 스탭
         id: build-image      
@@ -38,5 +38,5 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: latest
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f community/Dockerfile community/
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
