@@ -1,7 +1,7 @@
 let page = 1; //게시글 불러오는 페이지 번호
 let limit = 5; //게시글을 한페이지에 몇개 가져올것인가
 let pagePoint = 1; //하단 페이지 버튼의 시작 숫자
-let boardInfoUrl = `http://${BACKEND_URL}:5050/api/boards?page=${page}&limit=${limit}`;
+let boardInfoUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards?page=${page}&limit=${limit}`;
 axios.defaults.withCredentials = true;
 
 const formatCount = count => {
@@ -109,7 +109,7 @@ document.querySelector('.pagination').addEventListener('click', async event => {
             page = parseInt(target.textContent, 10);
         }
 
-        boardInfoUrl = `http://${BACKEND_URL}:5050/api/boards?page=${page}&limit=${limit}`;
+        boardInfoUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards?page=${page}&limit=${limit}`;
         await loadPage();
     } catch (e) {
         console.error(e);

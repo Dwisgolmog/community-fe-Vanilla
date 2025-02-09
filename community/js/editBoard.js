@@ -1,6 +1,6 @@
 const url = window.location.href;
 const boardNumber = url.substring(url.lastIndexOf('/') + 1);
-const boardInfoUrl = `http://${BACKEND_URL}:5050/api/boards/${boardNumber}`;
+const boardInfoUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards/${boardNumber}`;
 
 const inputTitle = document.querySelector('#input-title');
 const inputContent = document.querySelector('#textArea');

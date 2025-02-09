@@ -1,4 +1,4 @@
-const url = `http://${BACKEND_URL}:5050/api/users/login`;
+const url = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/users/login`;
 
 let checkEmail = false;
 let checkPassword = false;
@@ -87,5 +87,11 @@ loginBtn.addEventListener('click', async () => {
     } catch (e) {
         console.log(e);
         alert(e.response.data.message);
+    }
+});
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' && loginBtn) {
+        loginBtn.click();
     }
 });

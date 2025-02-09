@@ -1,9 +1,9 @@
 const url = window.location.href;
 const boardNumber = url.substring(url.lastIndexOf('/') + 1);
-const boardInfoUrl = `http://${BACKEND_URL}:5050/api/boards/${boardNumber}`;
-const boardCommentUrl = `http://${BACKEND_URL}:5050/api/boards/${boardNumber}/comments`;
-const boardLikeUrl = `http://${BACKEND_URL}:5050/api/boards/like/${boardNumber}`;
-const boardunLikeUrl = `http://${BACKEND_URL}:5050/api/boards/unlike/${boardNumber}`;
+const boardInfoUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards/${boardNumber}`;
+const boardCommentUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards/${boardNumber}/comments`;
+const boardLikeUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards/like/${boardNumber}`;
+const boardunLikeUrl = `${PROTOCOL}://${BACKEND_URL}:${BACKEND_PORT}/api/boards/unlike/${boardNumber}`;
 let removeCommentId; //댓글 삭제시 댓글 번호 저장
 let liked;
 
@@ -148,7 +148,8 @@ const handleEditComment = commentId => {
 };
 
 //NOTE: 댓글 작성 & 수정
-document.querySelector('#add-comment').addEventListener('click', async () => {
+const comment = document.querySelector('#add-comment');
+comment.addEventListener('click', async () => {
     const inputText = document.querySelector('#input-comment');
     const comment = inputText.value.trim();
     const addCommentBtn = document.querySelector('#add-comment');
@@ -254,3 +255,13 @@ const handleError = e => {
         console.error(e);
     }
 };
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' && event.shiftKey) {
+        return;
+    }
+
+    if (event.key === 'Enter' && comment) {
+        comment.click();
+    }
+});
