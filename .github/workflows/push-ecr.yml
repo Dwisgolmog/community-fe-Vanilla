@@ -1,42 +1,95 @@
-name: Deploy to Amazon ECR
+name: Deploy to AWS Elastic Beanstalk
 
 on:
-  workflow_dispatch: # 수동으로 action을 실행 가능하게 해줌
+  workflow_dispatch:  # GitHub Actions에서 수동 실행 가능하게 설정
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - main  # main 브랜치에 push될 때 실행
+
 env:
-  AWS_REGION: ap-northeast-2  # aws 리전(서울)
+  AWS_REGION: ap-northeast-2  # AWS 서울 리전
+  EB_APPLICATION_NAME: community-application  # Elastic Beanstalk 애플리케이션 이름
+  EB_ENVIRONMENT_NAME: Community-application-env-2  # Elastic Beanstalk 환경 이름
+  EB_S3_BUCKET: elasticbeanstalk-ap-northeast-2-430118833392  # Elastic Beanstalk에서 사용할 S3 버킷 (미리 생성 필요)
+  IMAGE_TAG: latest  # Docker 이미지 태그 (항상 최신 버전으로 유지)
+
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy to AWS Elastic Beanstalk
     runs-on: ubuntu-latest
     environment: production
 
     steps:
-      - name: Checkout # 코드를 가져옴(버전은 혹시 모르니 2버전 사용)
+      # 1. GitHub 저장소의 코드 체크아웃
+      - name: Checkout Repository
         uses: actions/checkout@v2 
 
-      - name: Configure AWS credentials	# aws 자격증명 설정
+      # 2. AWS 자격 증명 설정
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Login to Amazon ECR     #ECR 로그인
+      # 3. Amazon ECR 로그인
+      - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build, tag, and push image to Amazon ECR # ECR에 푸시하기위해 빌드하고 푸시하기위한 스탭
+      # 4. Docker 이미지 빌드 및 ECR에 푸시
+      - name: Build, tag, and push image to Amazon ECR
         id: build-image      
         env:
-          ECR_REPOSITORY: ${{ secrets.ECR_REPO_NAME }}
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: latest
+          ECR_REPOSITORY: ${{ secrets.ECR_REPO_NAME }}  # GitHub Secrets에서 ECR 리포지토리명 불러오기
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}  # ECR 로그인에서 가져온 레지스트리 정보
         run: |
+          # Docker 이미지 빌드
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f community/Dockerfile community/
+          
+          # 태그 지정 및 ECR에 푸시
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      # 5. Dockerrun.aws.json 파일 생성
+      - name: Generate Dockerrun.aws.json
+        run: |
+          cat <<EOF > Dockerrun.aws.json
+          {
+            "AWSEBDockerrunVersion": "1",
+            "Image": {
+              "Name": "${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPO_NAME }}:${{ env.IMAGE_TAG }}",
+              "Update": "true"
+            },
+            "Ports": [
+              {
+                "ContainerPort": "8080"
+              }
+            ]
+          }
+          EOF
+
+      # 6. Dockerrun.aws.json 파일을 압축 후 S3에 업로드
+      - name: Upload Dockerrun.aws.json to S3
+        run: |
+          # 압축하여 EB에서 사용할 수 있도록 준비
+          zip deploy.zip Dockerrun.aws.json
+          
+          # S3 버킷에 업로드 (Elastic Beanstalk에서 읽어가기 위해 필요)
+          aws s3 cp deploy.zip s3://${{ env.EB_S3_BUCKET }}/deploy.zip
+
+      # 7. Elastic Beanstalk 애플리케이션 버전 생성 및 배포
+      - name: Deploy new version to Elastic Beanstalk
+        run: |
+          # 새 버전 라벨 생성 (날짜 기반)
+          VERSION_LABEL="deploy-$(date +%Y%m%d%H%M%S)"
+
+          # Elastic Beanstalk 애플리케이션 버전 생성
+          aws elasticbeanstalk create-application-version \
+            --application-name $EB_APPLICATION_NAME \
+            --version-label $VERSION_LABEL \
+            --source-bundle S3Bucket=${{ env.EB_S3_BUCKET }},S3Key=deploy.zip
+
+          # Elastic Beanstalk 환경을 새 버전으로 업데이트
+          aws elasticbeanstalk update-environment \
+            --environment-name $EB_ENVIRONMENT_NAME \
+            --version-label $VERSION_LABEL
